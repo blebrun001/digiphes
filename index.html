@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hub IPHES-CERCA | Digitalisation des collections</title>
+    <meta
+      name="description"
+      content="Hub institutionnel du projet de digitalisation des collections de l'IPHES-CERCA."
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/i18n.js"></script>
+    <script defer src="assets/js/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skip">Aller au contenu</a>
+
+    <header class="site-header">
+      <div class="header-grid">
+        <div class="brand">
+          <p class="kicker" data-i18n="header.kicker">Hub institutionnel</p>
+          <h1 data-i18n="header.title">Digitalisation des collections IPHES-CERCA</h1>
+          <p class="baseline" data-i18n="header.baseline">
+            Un point d'accès minimaliste pour structurer, suivre et diffuser l'avancement du projet.
+          </p>
+        </div>
+
+        <div class="lang-switch" role="group" aria-label="Language switcher">
+          <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+          <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">CA</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+
+      <nav class="site-nav" aria-label="Sections principales">
+        <a href="#presentation" data-i18n="nav.presentation">Présentation</a>
+        <a href="#axes" data-i18n="nav.axes">Axes</a>
+        <a href="#access" data-i18n="nav.access">Accès</a>
+        <a href="#roadmap" data-i18n="nav.roadmap">Roadmap</a>
+        <a href="#news" data-i18n="nav.news">Actualités</a>
+      </nav>
+    </header>
+
+    <main id="main-content" class="layout">
+      <section id="presentation" class="panel">
+        <h2 data-i18n="presentation.title">Présentation</h2>
+        <p data-i18n="presentation.body">
+          Ce hub centralise les briques essentielles du projet: objectifs, axes de travail, état d'avancement
+          et informations institutionnelles pour les équipes impliquées.
+        </p>
+      </section>
+
+      <section id="axes" class="panel">
+        <h2 data-i18n="axes.title">Axes de travail</h2>
+        <div class="card-grid">
+          <article class="card">
+            <h3 data-i18n="axes.card1.title">Inventaire et priorisation</h3>
+            <p data-i18n="axes.card1.body">
+              Identifier les ensembles prioritaires, harmoniser les métadonnées et définir les lots de traitement.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="axes.card2.title">Numérisation et qualité</h3>
+            <p data-i18n="axes.card2.body">
+              Formaliser les protocoles de capture, de contrôle qualité et de normalisation des formats.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="axes.card3.title">Structuration sémantique</h3>
+            <p data-i18n="axes.card3.body">
+              Aligner les données sur des modèles communs pour faciliter l'interopérabilité scientifique.
+            </p>
+          </article>
+          <article class="card">
+            <h3 data-i18n="axes.card4.title">Diffusion et réutilisation</h3>
+            <p data-i18n="axes.card4.body">
+              Préparer les canaux de consultation, de documentation et de valorisation des collections numérisées.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="access" class="panel">
+        <h2 data-i18n="access.title">Accès</h2>
+        <p data-i18n="access.body">
+          Cette version V1 propose uniquement des points d'entrée internes pour naviguer dans le hub.
+        </p>
+        <ul class="quick-links">
+          <li><a href="#roadmap" data-i18n="access.linkRoadmap">Consulter la roadmap</a></li>
+          <li><a href="#news" data-i18n="access.linkNews">Lire les actualités</a></li>
+          <li><a href="#presentation" data-i18n="access.linkContext">Revenir au contexte du projet</a></li>
+        </ul>
+      </section>
+
+      <section id="roadmap" class="panel">
+        <h2 data-i18n="roadmap.title">Roadmap</h2>
+        <div id="roadmap-content" class="md-block" aria-live="polite"></div>
+      </section>
+
+      <section id="news" class="panel">
+        <h2 data-i18n="news.title">Actualités</h2>
+        <div id="news-content" class="md-block" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footer.note">IPHES-CERCA · Hub de projet · Version initiale V1</p>
+    </footer>
+  </body>
+</html>
