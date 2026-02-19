@@ -1,20 +1,28 @@
-# Full de ruta 2026
+# Calendari provisional
 
-## T1
-- Auditoria dels lots prioritaris de col·leccions.
-- Consolidació dels camps de metadades crítics.
-- Definició dels protocols de digitalització.
+## Any 1 - Estructuració
+- Recollida d'informació.
+- Definició de prioritats entre col·leccions.
+- Selecció d'eines (programari, estàndards, protocols).
+- Integració by design: ciència oberta, FAIR, estàndards ISO, ontologies.
+- Desenvolupament de protocols.
+- Implementació inicial en un nombre limitat de col·leccions.
+- Ajustaments dels processos segons retorn de camp.
+- Inici d'accions de difusió i visibilitat centrades en protocols.
 
-## T2
-- Inici del tractament dels primers conjunts seleccionats.
-- Implementació d'un circuit de control de qualitat documental.
-- Alineació del vocabulari professional per a la indexació.
+## Any 2 - Desplegament
+- Contractació de dos tècnics especialitzats.
+- Formació dels dos tècnics especialitzats.
+- Desplegament progressiu dels processos en múltiples col·leccions.
+- Implementació i estabilització d'eines i protocols.
+- Ajustaments dels processos segons retorn de camp.
+- Difusió i visibilitat científiques i institucionals.
 
-## T3
-- Estructuració semàntica de les dades produïdes.
-- Documentació interna dels fluxos de treball.
-- Preparació dels primers escenaris de difusió.
+## Any 3 - Consolidació
+- Documentació completa (procediments, recursos i referències).
+- Posicionament extern (xarxes, col·laboracions interlaboratori).
+- Sostenibilitat del dispositiu.
+- Difusió i visibilitat científiques i institucionals.
 
-## T4
-- Estabilització del hub de projecte i seguiment editorial.
-- Balanç anual i prioritats del període següent.
+## Visió general
+Les tres fases (Estructuració, Desplegament, Consolidació) operativitzen la lògica estratègica dels WP1 i WP2 en el període 2026-2028.

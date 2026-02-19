@@ -1,20 +1,28 @@
-# Feuille de route 2026
+# Calendrier provisoire
 
-## T1
-- Audit des lots prioritaires de collections.
-- Consolidation des champs de métadonnées critiques.
-- Définition des protocoles de numérisation.
+## Année 1 - Structuration
+- Collecte d'informations.
+- Définition des priorités entre collections.
+- Sélection des outils (logiciels, standards, protocoles).
+- Intégration by design: science ouverte, FAIR, standards ISO, ontologies.
+- Développement des protocoles.
+- Implémentation initiale sur un nombre limité de collections.
+- Ajustements des processus selon les retours de terrain.
+- Début des actions de diffusion et de visibilité centrées sur les protocoles.
 
-## T2
-- Lancement du traitement des premiers ensembles sélectionnés.
-- Mise en place d'une chaîne de contrôle qualité documentaire.
-- Alignement du vocabulaire métier pour l'indexation.
+## Année 2 - Déploiement
+- Recrutement de deux techniciens spécialisés.
+- Formation des deux techniciens spécialisés.
+- Déploiement progressif des processus sur plusieurs collections.
+- Mise en oeuvre et stabilisation des outils et protocoles.
+- Ajustements des processus selon les retours de terrain.
+- Diffusion et visibilité scientifiques et institutionnelles.
 
-## T3
-- Structuration sémantique des données produites.
-- Documentation interne des workflows de production.
-- Préparation des premiers scénarios de diffusion.
+## Année 3 - Consolidation
+- Documentation complète (procédures, ressources, références).
+- Positionnement externe (réseaux, collaborations inter-laboratoires).
+- Pérennisation du dispositif.
+- Diffusion et visibilité scientifiques et institutionnelles.
 
-## T4
-- Stabilisation du hub projet et du suivi éditorial.
-- Bilan annuel et priorités de l'exercice suivant.
+## Vue d'ensemble
+Les trois phases (Structuration, Déploiement, Consolidation) opérationnalisent la logique stratégique des WP1 et WP2 sur 2026-2028.
