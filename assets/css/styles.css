@@ -1,14 +1,14 @@
 :root {
-  --bg: #f6f3ee;
-  --bg-soft: #fffdf9;
-  --ink: #1d2a34;
-  --muted: #586777;
-  --line: #d7e1e6;
-  --panel: #ffffff;
-  --panel-soft: #f2f7fa;
-  --accent: #0a6f8f;
-  --accent-2: #f58b3b;
-  --focus: #f58b3b;
+  --bg: #000000;
+  --bg-soft: #000000;
+  --ink: #ffffff;
+  --muted: #ffffff;
+  --line: #ffffff;
+  --panel: #000000;
+  --panel-soft: #000000;
+  --accent: #ffffff;
+  --accent-2: #ffffff;
+  --focus: #ffffff;
   --radius: 20px;
   --container: 1120px;
 }
@@ -26,10 +26,7 @@ body {
   color: var(--ink);
   font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
   line-height: 1.6;
-  background:
-    radial-gradient(1200px 520px at -5% -10%, rgba(10, 111, 143, 0.12), transparent 58%),
-    radial-gradient(980px 420px at 105% 4%, rgba(245, 139, 59, 0.14), transparent 64%),
-    linear-gradient(180deg, #fbf7f1 0%, #f6f3ee 62%, #f2f6f8 100%);
+  background: #000000;
 }
 
 .page-shell {
@@ -70,8 +67,8 @@ a {
   z-index: 30;
   padding: 1rem 0;
   backdrop-filter: blur(8px);
-  background: rgba(246, 243, 238, 0.84);
-  border-bottom: 1px solid rgba(215, 225, 230, 0.7);
+  background: #000000;
+  border-bottom: 1px solid #ffffff;
 }
 
 .top-bar {
@@ -107,7 +104,7 @@ a {
 .lang-btn {
   border: 0;
   border-right: 1px solid var(--line);
-  background: transparent;
+  background: #000000;
   color: var(--muted);
   min-width: 2.8rem;
   padding: 0.42rem 0.72rem;
@@ -120,13 +117,13 @@ a {
 }
 
 .lang-btn:hover {
-  background: #edf4f7;
-  color: var(--ink);
+  background: #ffffff;
+  color: #000000;
 }
 
 .lang-btn.is-active {
-  background: var(--ink);
-  color: #ffffff;
+  background: #ffffff;
+  color: #000000;
 }
 
 .site-nav {
@@ -139,8 +136,8 @@ a {
 .site-nav a {
   text-decoration: none;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.78);
-  color: #243341;
+  background: #000000;
+  color: #ffffff;
   border-radius: 999px;
   padding: 0.36rem 0.76rem;
   font-size: 0.9rem;
@@ -150,8 +147,9 @@ a {
 
 .site-nav a:hover {
   transform: translateY(-1px);
-  border-color: #b7c8d1;
+  border-color: #ffffff;
   background: #ffffff;
+  color: #000000;
 }
 
 .landing {
@@ -163,12 +161,10 @@ a {
 .hero {
   grid-column: 1 / -1;
   min-height: clamp(380px, 64vh, 560px);
-  border: 1px solid #d5e0e8;
+  border: 1px solid #ffffff;
   border-radius: calc(var(--radius) + 6px);
   padding: clamp(1rem, 4vw, 2rem);
-  background:
-    linear-gradient(130deg, rgba(10, 111, 143, 0.12), rgba(245, 139, 59, 0.12)),
-    var(--panel);
+  background: var(--panel);
   display: grid;
   gap: 1rem;
   align-items: center;
@@ -185,12 +181,12 @@ a {
   letter-spacing: 0.12em;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #24556c;
+  color: #ffffff;
 }
 
 .baseline {
   max-width: 58ch;
-  color: #314452;
+  color: #ffffff;
   font-size: 1.03rem;
 }
 
@@ -206,34 +202,36 @@ a {
   border-radius: 999px;
   padding: 0.64rem 1rem;
   font-weight: 700;
-  border: 1px solid transparent;
+  border: 1px solid #ffffff;
   transition: all 0.2s ease;
 }
 
 .cta-primary {
   background: var(--accent);
-  color: #ffffff;
+  color: #000000;
 }
 
 .cta-primary:hover {
-  background: #085a73;
+  background: #000000;
+  color: #ffffff;
 }
 
 .cta-ghost {
-  border-color: #b6cad4;
-  color: #213645;
-  background: rgba(255, 255, 255, 0.75);
+  border-color: #ffffff;
+  color: #ffffff;
+  background: #000000;
 }
 
 .cta-ghost:hover {
   background: #ffffff;
-  border-color: #8ea9b7;
+  border-color: #ffffff;
+  color: #000000;
 }
 
 .hero-highlight {
-  border: 1px solid rgba(10, 111, 143, 0.2);
+  border: 1px solid #ffffff;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.88);
+  background: #000000;
   padding: 1rem;
   max-width: 420px;
   justify-self: end;
@@ -248,13 +246,13 @@ a {
 .hero-highlight-title {
   margin-top: 0.8rem;
   font-weight: 700;
-  color: #1d3d4f;
+  color: #ffffff;
 }
 
 .hero-highlight-list {
   margin: 0.6rem 0 0;
   padding-left: 1rem;
-  color: #375061;
+  color: #ffffff;
 }
 
 .panel {
@@ -265,12 +263,12 @@ a {
 }
 
 .section-intro {
-  color: #3c4e5d;
+  color: #ffffff;
   max-width: 72ch;
 }
 
 .metrics-panel {
-  background: linear-gradient(180deg, #ffffff 0%, #f4fafc 100%);
+  background: #000000;
 }
 
 .metrics-grid {
@@ -280,21 +278,21 @@ a {
 }
 
 .metric-card {
-  border: 1px solid #d4e2e9;
+  border: 1px solid #ffffff;
   border-radius: 14px;
   padding: 0.95rem;
-  background: #ffffff;
+  background: #000000;
 }
 
 .metric-value {
   font-family: "Sora", "Avenir Next", sans-serif;
   font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 800;
-  color: #114c63;
+  color: #ffffff;
 }
 
 .metric-label {
-  color: #4f6170;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -305,7 +303,7 @@ a {
 }
 
 .card {
-  border: 1px solid #d8e4ea;
+  border: 1px solid #ffffff;
   border-radius: 14px;
   padding: 0.95rem;
   background: var(--panel-soft);
@@ -316,13 +314,11 @@ a {
 }
 
 .card p {
-  color: #415563;
+  color: #ffffff;
 }
 
 .roadmap-visual {
-  background:
-    linear-gradient(180deg, rgba(10, 111, 143, 0.03), rgba(245, 139, 59, 0.08)),
-    #fffdfb;
+  background: #000000;
 }
 
 .timeline {
@@ -339,16 +335,16 @@ a {
   top: 10px;
   bottom: 10px;
   width: 2px;
-  background: linear-gradient(180deg, #0a6f8f, #f58b3b);
+  background: #ffffff;
 }
 
 .milestone {
   position: relative;
   margin-left: 0.8rem;
   padding: 0.85rem 0.85rem 0.85rem 1.1rem;
-  border: 1px solid #d5e1e8;
+  border: 1px solid #ffffff;
   border-radius: 14px;
-  background: #ffffff;
+  background: #000000;
 }
 
 .milestone::before {
@@ -359,17 +355,17 @@ a {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: #0a6f8f;
-  box-shadow: 0 0 0 6px rgba(10, 111, 143, 0.12);
+  background: #ffffff;
+  box-shadow: none;
 }
 
 .milestone-phase {
   font-weight: 700;
-  color: #1f4052;
+  color: #ffffff;
 }
 
 .milestone-text {
-  color: #445766;
+  color: #ffffff;
 }
 
 .md-block :first-child {
@@ -392,7 +388,7 @@ a {
 
 .site-footer {
   padding: 0.5rem 0 1.8rem;
-  color: #60707d;
+  color: #ffffff;
   font-size: 0.9rem;
 }
 
