@@ -181,8 +181,57 @@
     });
   }
 
+  function registerLanguageMenu() {
+    const switcher = document.querySelector(".lang-switcher");
+    const toggle = document.querySelector("[data-lang-toggle]");
+    if (!switcher || !toggle) {
+      return;
+    }
+
+    function closeMenu() {
+      switcher.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    function openMenu() {
+      switcher.classList.add("is-open");
+      toggle.setAttribute("aria-expanded", "true");
+      const firstOption = switcher.querySelector(".lang-menu .lang-btn");
+      if (firstOption) {
+        firstOption.focus();
+      }
+    }
+
+    toggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = switcher.classList.contains("is-open");
+      if (isOpen) {
+        closeMenu();
+        return;
+      }
+      openMenu();
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!switcher.contains(event.target)) {
+        closeMenu();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    switcher.querySelectorAll(".lang-menu .lang-btn").forEach((btn) => {
+      btn.addEventListener("click", closeMenu);
+    });
+  }
+
   function init() {
     registerLanguageButtons();
+    registerLanguageMenu();
     applyTranslations(getStoredLanguage());
   }
 
