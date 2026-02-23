@@ -30,8 +30,8 @@ body {
 }
 
 .page-shell {
-  width: min(var(--container), 92vw);
-  margin-inline: auto;
+  width: 100%;
+  margin-inline: 0;
   min-height: 100vh;
 }
 
@@ -62,94 +62,14 @@ a {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  padding: 1rem 0;
-  backdrop-filter: blur(8px);
+  padding: 0.9rem 0;
   background: #000000;
-  border-bottom: 1px solid #ffffff;
-}
-
-.top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.logo-mark {
-  margin: 0;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 800;
-  font-size: 0.84rem;
-  color: var(--muted);
 }
 
 .header-logo {
   display: block;
   width: auto;
-  height: clamp(28px, 4.5vw, 38px);
-}
-
-.lang-switch {
-  display: inline-flex;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  overflow: hidden;
-  background: var(--panel);
-}
-
-.lang-btn {
-  border: 0;
-  border-right: 1px solid var(--line);
-  background: #000000;
-  color: var(--muted);
-  min-width: 2.8rem;
-  padding: 0.42rem 0.72rem;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.lang-btn:last-child {
-  border-right: 0;
-}
-
-.lang-btn:hover {
-  background: #ffffff;
-  color: #000000;
-}
-
-.lang-btn.is-active {
-  background: #ffffff;
-  color: #000000;
-}
-
-.site-nav {
-  margin-top: 0.9rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-}
-
-.site-nav a {
-  text-decoration: none;
-  border: 1px solid var(--line);
-  background: #000000;
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 0.36rem 0.76rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.site-nav a:hover {
-  transform: translateY(-1px);
-  border-color: #ffffff;
-  background: #ffffff;
-  color: #000000;
+  height: clamp(30px, 4.5vw, 42px);
 }
 
 .landing {
