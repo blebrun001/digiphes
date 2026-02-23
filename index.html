@@ -13,8 +13,6 @@
     <script defer src="assets/js/app.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main-content" data-i18n="a11y.skip">Aller au contenu</a>
-
     <div class="page-shell">
       <header class="site-header">
         <div class="top-bar">
@@ -27,9 +25,9 @@
         </div>
 
         <nav class="site-nav" aria-label="Sections principales">
-          <a href="#presentation" data-i18n="nav.presentation">Présentation</a>
-          <a href="#axes" data-i18n="nav.axes">Objectifs</a>
-          <a href="#access" data-i18n="nav.access">Périmètre</a>
+          <a href="#vision" data-i18n="nav.vision">Vision</a>
+          <a href="#metrics" data-i18n="nav.metrics">Chiffres clés</a>
+          <a href="#roadmap-visual" data-i18n="nav.roadmapVisual">Roadmap</a>
           <a href="#roadmap" data-i18n="nav.roadmap">Calendrier</a>
           <a href="#news" data-i18n="nav.news">Livrables</a>
         </nav>
@@ -37,78 +35,95 @@
 
       <main id="main-content" class="landing">
         <section class="hero">
-          <p class="kicker" data-i18n="header.kicker">Hub institutionnel</p>
-          <h1 data-i18n="header.title">Digitalisation des collections IPHES-CERCA</h1>
-          <p class="baseline" data-i18n="header.baseline">
-            Un point d'accès minimaliste pour structurer, suivre et diffuser l'avancement du projet.
+          <div class="hero-copy">
+            <p class="kicker" data-i18n="header.kicker">Programme stratégique</p>
+            <h1 data-i18n="header.title">Digitalisation des collections IPHES-CERCA</h1>
+            <p class="baseline" data-i18n="header.baseline">
+              Une one-page projet pour piloter la transformation numérique des collections, partager l'avancement et
+              rendre visibles les résultats.
+            </p>
+            <div class="hero-actions">
+              <a href="#roadmap-visual" class="cta cta-primary" data-i18n="hero.ctaPrimary">Voir la roadmap visuelle</a>
+              <a href="#metrics" class="cta cta-ghost" data-i18n="hero.ctaSecondary">Voir les chiffres clés</a>
+            </div>
+          </div>
+          <aside class="hero-highlight" aria-label="Aperçu du projet">
+            <img src="images/logo.png" alt="IPHES-CERCA" class="hero-logo" />
+            <p class="hero-highlight-title" data-i18n="hero.highlight.title">Project snapshot</p>
+            <ul class="hero-highlight-list">
+              <li data-i18n="hero.highlight.item1">Gouvernance multi-WP</li>
+              <li data-i18n="hero.highlight.item2">Standards FAIR et CIDOC-CRM</li>
+              <li data-i18n="hero.highlight.item3">Traçabilité complète des étapes</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section id="metrics" class="panel metrics-panel">
+          <h2 data-i18n="metrics.title">Chiffres clés</h2>
+          <p class="section-intro" data-i18n="metrics.body">
+            Vue synthétique des indicateurs qui structurent le pilotage et la communication projet.
           </p>
-          <div class="hero-actions">
-            <a href="#roadmap" class="cta cta-primary" data-i18n="access.linkRoadmap">Voir le calendrier provisoire</a>
-            <a href="#news" class="cta cta-ghost" data-i18n="access.linkNews">Voir les livrables et questions</a>
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <p class="metric-value" data-i18n="metrics.card1.value">3 ans</p>
+              <p class="metric-label" data-i18n="metrics.card1.label">Horizon de planification</p>
+            </article>
+            <article class="metric-card">
+              <p class="metric-value" data-i18n="metrics.card2.value">4 WP</p>
+              <p class="metric-label" data-i18n="metrics.card2.label">Work packages coordonnés</p>
+            </article>
+            <article class="metric-card">
+              <p class="metric-value" data-i18n="metrics.card3.value">3 langues</p>
+              <p class="metric-label" data-i18n="metrics.card3.label">Diffusion multilingue</p>
+            </article>
+            <article class="metric-card">
+              <p class="metric-value" data-i18n="metrics.card4.value">1 hub</p>
+              <p class="metric-label" data-i18n="metrics.card4.label">Point d'accès unifié</p>
+            </article>
           </div>
         </section>
 
-        <section id="presentation" class="panel">
-          <h2 data-i18n="presentation.title">Présentation</h2>
-          <p data-i18n="presentation.body">
-            Ce hub centralise les briques essentielles du projet: objectifs, axes de travail, état d'avancement
-            et informations institutionnelles pour les équipes impliquées.
+        <section id="vision" class="panel">
+          <h2 data-i18n="vision.title">Proposition de valeur</h2>
+          <p class="section-intro" data-i18n="vision.body">
+            Une exécution structurée pour passer de la collection physique à un actif scientifique exploitable et
+            interopérable.
           </p>
-        </section>
-
-        <section id="axes" class="panel">
-          <h2 data-i18n="axes.title">Objectifs opérationnels</h2>
           <div class="card-grid">
             <article class="card">
-              <h3 data-i18n="axes.card1.title">Inventaire et priorisation</h3>
-              <p data-i18n="axes.card1.body">
-                Identifier les ensembles prioritaires, harmoniser les métadonnées et définir les lots de traitement.
-              </p>
+              <h3 data-i18n="vision.card1.title">Structurer</h3>
+              <p data-i18n="vision.card1.body">Inventaire, priorisation et normalisation des données pour des flux de travail robustes.</p>
             </article>
             <article class="card">
-              <h3 data-i18n="axes.card2.title">Conception des processus</h3>
-              <p data-i18n="axes.card2.body">
-                Structurer les processus de digitalisation (WP2) selon science ouverte, FAIR et standards.
-              </p>
+              <h3 data-i18n="vision.card2.title">Produire</h3>
+              <p data-i18n="vision.card2.body">Digitalisation progressive, protocoles maîtrisés et qualité suivie à chaque étape.</p>
             </article>
             <article class="card">
-              <h3 data-i18n="axes.card3.title">Structuration sémantique</h3>
-              <p data-i18n="axes.card3.body">
-                Aligner les données sur des modèles communs pour faciliter l'interopérabilité scientifique.
-              </p>
-            </article>
-            <article class="card">
-              <h3 data-i18n="axes.card4.title">Support et formation</h3>
-              <p data-i18n="axes.card4.body">
-                Accompagner les équipes sur la digitalisation et favoriser l'adoption des protocoles (WP3).
-              </p>
-            </article>
-            <article class="card">
-              <h3 data-i18n="axes.card5.title">Reporting</h3>
-              <p data-i18n="axes.card5.body">
-                Produire des synthèses d'avancement, documenter les choix méthodologiques et suivre des indicateurs.
-              </p>
-            </article>
-            <article class="card">
-              <h3 data-i18n="axes.card6.title">Dissemination</h3>
-              <p data-i18n="axes.card6.body">
-                Renforcer la visibilité scientifique et institutionnelle des processus et des résultats.
-              </p>
+              <h3 data-i18n="vision.card3.title">Diffuser</h3>
+              <p data-i18n="vision.card3.body">Valorisation scientifique et institutionnelle via des livrables lisibles et réguliers.</p>
             </article>
           </div>
         </section>
 
-        <section id="access" class="panel">
-          <h2 data-i18n="access.title">Périmètre d'action</h2>
-          <p data-i18n="access.body">
-            Le périmètre couvre les collections du laboratoire, avec des exclusions explicites sur
-            l'infrastructure IT et les processus de recherche hors collections.
+        <section id="roadmap-visual" class="panel roadmap-visual">
+          <h2 data-i18n="roadmapVisual.title">Roadmap visuelle</h2>
+          <p class="section-intro" data-i18n="roadmapVisual.body">
+            Infographie des phases projet pour comprendre rapidement les jalons principaux.
           </p>
-          <ul class="quick-links">
-            <li><a href="#roadmap" data-i18n="access.linkRoadmap">Voir le calendrier provisoire</a></li>
-            <li><a href="#news" data-i18n="access.linkNews">Voir les livrables et questions</a></li>
-            <li><a href="#presentation" data-i18n="access.linkContext">Revenir au contexte du projet</a></li>
-          </ul>
+          <div class="timeline">
+            <article class="milestone">
+              <p class="milestone-phase" data-i18n="roadmapVisual.phase1.title">Phase 1 · Cadrage</p>
+              <p class="milestone-text" data-i18n="roadmapVisual.phase1.body">Audit des collections, priorisation des lots et définition des standards.</p>
+            </article>
+            <article class="milestone">
+              <p class="milestone-phase" data-i18n="roadmapVisual.phase2.title">Phase 2 · Industrialisation</p>
+              <p class="milestone-text" data-i18n="roadmapVisual.phase2.body">Mise en production des protocoles, montée en charge et suivi des indicateurs.</p>
+            </article>
+            <article class="milestone">
+              <p class="milestone-phase" data-i18n="roadmapVisual.phase3.title">Phase 3 · Valorisation</p>
+              <p class="milestone-text" data-i18n="roadmapVisual.phase3.body">Consolidation des livrables, diffusion scientifique et amélioration continue.</p>
+            </article>
+          </div>
         </section>
 
         <section id="roadmap" class="panel">
