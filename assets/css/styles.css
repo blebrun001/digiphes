@@ -95,9 +95,8 @@ a {
 }
 
 .lang-icon {
-  width: 16px;
-  height: 16px;
-  fill: currentColor;
+  font-size: 16px;
+  line-height: 1;
   flex: 0 0 auto;
 }
 
@@ -187,12 +186,17 @@ a {
   color: #000000;
   display: grid;
   gap: 1rem;
-  align-items: center;
+  align-items: start;
 }
 
 .hero-copy {
   display: grid;
   gap: 0.9rem;
+}
+
+.hero h1 {
+  text-align: left;
+  max-width: 40ch;
 }
 
 .kicker {
