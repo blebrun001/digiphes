@@ -1,6 +1,10 @@
 (() => {
   const roadmapNode = document.getElementById("roadmap-content");
   const newsNode = document.getElementById("news-content");
+  const dynamicSections = [
+    { node: roadmapNode, type: "roadmap" },
+    { node: newsNode, type: "news" }
+  ].filter((entry) => entry.node);
 
   function escapeHtml(value) {
     return value
@@ -120,13 +124,14 @@
   }
 
   async function refreshDynamicSections(lang) {
-    await Promise.all([
-      hydrateNode(roadmapNode, lang, "roadmap"),
-      hydrateNode(newsNode, lang, "news")
-    ]);
+    await Promise.all(dynamicSections.map((entry) => hydrateNode(entry.node, lang, entry.type)));
   }
 
   function init() {
+    if (!dynamicSections.length) {
+      return;
+    }
+
     const initialLang = window.I18n.getStoredLanguage();
     refreshDynamicSections(initialLang);
 
