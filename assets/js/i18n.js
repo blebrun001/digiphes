@@ -34,6 +34,8 @@
       "roadmapVisual.phase2.body": "Puesta en marcha de protocolos, escalado y seguimiento de indicadores.",
       "roadmapVisual.phase3.title": "Consolidacion",
       "roadmapVisual.phase3.body": "Consolidacion de entregables, difusion cientifica y mejora continua.",
+      "staff.role.responsible": "Responsable",
+      "staff.role.member": "Miembro",
       "footer.address": "2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Espana) · info@iphes.cat | (+34) 977 943 003",
       "footer.privacy": "Este sitio web no recopila datos y no utiliza cookies."
     },
@@ -66,6 +68,8 @@
       "roadmapVisual.phase2.body": "Posada en marxa de protocols, escalat i seguiment d'indicadors.",
       "roadmapVisual.phase3.title": "Consolidacio",
       "roadmapVisual.phase3.body": "Consolidacio de lliurables, difusio cientifica i millora continua.",
+      "staff.role.responsible": "Responsable",
+      "staff.role.member": "Membre",
       "footer.address": "2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Espanya) · info@iphes.cat | (+34) 977 943 003",
       "footer.privacy": "Aquest lloc web no recopila dades i no utilitza cookies."
     },
@@ -98,6 +102,8 @@
       "roadmapVisual.phase2.body": "Protocol rollout, scaling, and indicator-driven monitoring.",
       "roadmapVisual.phase3.title": "Consolidation",
       "roadmapVisual.phase3.body": "Deliverable consolidation, scientific dissemination, and continuous improvement.",
+      "staff.role.responsible": "Lead",
+      "staff.role.member": "Member",
       "footer.address": "2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Spain) · info@iphes.cat | (+34) 977 943 003",
       "footer.privacy": "This website does not collect your data and no cookies are used."
     }

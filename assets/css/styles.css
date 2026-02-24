@@ -620,17 +620,40 @@ a {
 
 .team-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.45rem;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(0.45rem, 1vw, 1rem);
 }
 
 .team-member {
-  border-radius: 999px;
-  background: #e7e9ee;
-  border: 1px solid #d2d8e4;
-  padding: 0.35rem 0.6rem;
-  font-size: 0.78rem;
-  font-weight: 600;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.team-avatar {
+  width: clamp(70px, 8vw, 90px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.55rem;
+}
+
+.team-name {
+  margin: 0;
+  font-size: clamp(0.86rem, 1.6vw, 1rem);
+  line-height: 1.2;
+}
+
+.team-role {
+  margin: 0.12rem 0 0;
+  color: #8f9197;
+  font-size: 0.96rem;
+  line-height: 1.2;
 }
 
 .progress-value {
