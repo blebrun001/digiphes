@@ -622,7 +622,7 @@ a {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: clamp(0.45rem, 1vw, 1rem);
 }
 
@@ -633,6 +633,7 @@ a {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  height: 100%;
 }
 
 .team-avatar {
@@ -650,7 +651,7 @@ a {
 }
 
 .team-role {
-  margin: 0.12rem 0 0;
+  margin: auto 0 0;
   color: #8f9197;
   font-size: 0.96rem;
   line-height: 1.2;
