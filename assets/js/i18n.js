@@ -10,8 +10,8 @@
       "meta.description": "Hub institucional del proyecto de digitalizacion de colecciones de IPHES-CERCA.",
       "header.title": "Digitalizacion de colecciones de IPHES-CERCA",
       "header.baseline": "Una one-page de proyecto para dirigir la transformacion digital de las colecciones, compartir avances y hacer visibles los resultados.",
-      "metrics.title": "Algunas cifras",
-      "metrics.body": "Vista sintetica de los indicadores que estructuran la gestion y la comunicacion del proyecto.",
+      "metrics.title": "Key numbers",
+      "metrics.body": "",
       "metrics.card1.value": "3 anos",
       "metrics.card1.label": "Horizonte de planificacion",
       "metrics.card2.value": "15 colecciones",
@@ -22,9 +22,9 @@
       "collections.desc": "Descripcion temporal de referencia para esta coleccion.",
       "collections.access": "Acceder",
       "collections.requestSubject": "Solicitud de acceso a coleccion",
-      "hood.title": "Infraestructura y datos",
+      "hood.title": "Under the hood",
       "hood.body": "La digitalizacion de colecciones se apoya en soluciones avanzadas de gestion de datos e infraestructura; explora las colecciones a continuacion.",
-      "hood.cta": "Ver colecciones",
+      "hood.cta": "learn more",
       "roadmapVisual.title": "Hoja de ruta visual",
       "roadmapVisual.body": "Infografia de fases para entender rapidamente los hitos principales del proyecto.",
       "roadmapVisual.phase1.title": "Estructuracion",
@@ -41,8 +41,8 @@
       "meta.description": "Hub institucional del projecte de digitalitzacio de col.leccions d'IPHES-CERCA.",
       "header.title": "Digitalitzacio de col.leccions d'IPHES-CERCA",
       "header.baseline": "Una one-page de projecte per dirigir la transformacio digital de les col.leccions, compartir avanc i fer visibles els resultats.",
-      "metrics.title": "Algunes xifres",
-      "metrics.body": "Vista sintetica dels indicadors que estructuren la gestio i la comunicacio del projecte.",
+      "metrics.title": "Key numbers",
+      "metrics.body": "",
       "metrics.card1.value": "3 anys",
       "metrics.card1.label": "Horitzo de planificacio",
       "metrics.card2.value": "15 col.leccions",
@@ -53,9 +53,9 @@
       "collections.desc": "Descripcio temporal de referencia per a aquesta col.leccio.",
       "collections.access": "Accedir",
       "collections.requestSubject": "Sol.licitud d'acces a col.leccio",
-      "hood.title": "Infraestructura i dades",
+      "hood.title": "Under the hood",
       "hood.body": "La digitalitzacio de col.leccions es basa en solucions avancades de gestio de dades i infraestructura; explora les col.leccions a continuacio.",
-      "hood.cta": "Veure col.leccions",
+      "hood.cta": "learn more",
       "roadmapVisual.title": "Full de ruta visual",
       "roadmapVisual.body": "Infografia de fases per entendre rapidament les principals fites del projecte.",
       "roadmapVisual.phase1.title": "Estructuracio",
@@ -72,8 +72,8 @@
       "meta.description": "Institutional hub for the IPHES-CERCA collections digitization project.",
       "header.title": "IPHES-CERCA Collections Digitization",
       "header.baseline": "Discover how IPHES-CERCA is digitizing its collections through the Maria de Maeztu 2025-2029 project led by the laboratory.",
-      "metrics.title": "A few numbers",
-      "metrics.body": "A concise indicator set to steer execution and communicate project progress.",
+      "metrics.title": "Key numbers",
+      "metrics.body": "",
       "metrics.card1.value": "3 years",
       "metrics.card1.label": "Planning horizon",
       "metrics.card2.value": "15 Collections",
@@ -84,9 +84,9 @@
       "collections.desc": "Temporary placeholder description for this collection.",
       "collections.access": "Access",
       "collections.requestSubject": "Collection access request",
-      "hood.title": "Infrastructure and Data",
-      "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies; explore the collections below.",
-      "hood.cta": "View collections",
+      "hood.title": "Under the hood",
+      "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies. To learn more, clic the button below.",
+      "hood.cta": "learn more",
       "roadmapVisual.title": "Visual roadmap",
       "roadmapVisual.body": "Phase-based infographic to quickly understand core project milestones.",
       "roadmapVisual.phase1.title": "Structuring",
@@ -210,10 +210,27 @@
     });
   }
 
+  function registerScrollButtons() {
+    document.querySelectorAll("[data-scroll-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.getAttribute("data-scroll-target");
+        if (!targetId) {
+          return;
+        }
+        const target = document.getElementById(targetId);
+        if (!target) {
+          return;
+        }
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+  }
+
   function init() {
     registerLanguageButtons();
     registerLanguageMenu();
     registerCollectionAccessButtons();
+    registerScrollButtons();
     applyTranslations(getStoredLanguage());
   }
 
