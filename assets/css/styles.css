@@ -387,59 +387,63 @@ a {
 }
 
 .collection-anthracology {
-  --collection-bg: url("../../images/collections/anthracology.png");
+  --collection-bg: url("../../images/collections/anthracology.jpeg");
 }
 
 .collection-carpology {
-  --collection-bg: url("../../images/collections/carpology.png");
+  --collection-bg: url("../../images/collections/carpology .jpeg");
 }
 
 .collection-palynology {
-  --collection-bg: url("../../images/collections/palynology.png");
+  --collection-bg: url("../../images/collections/palynology.jpeg");
 }
 
 .collection-traceology {
-  --collection-bg: url("../../images/collections/traceology.png");
+  --collection-bg: url("../../images/collections/traceology.jpeg");
 }
 
 .collection-lithotheque {
-  --collection-bg: url("../../images/collections/lithotheque.png");
+  --collection-bg: url("../../images/collections/lithotheque.jpeg");
 }
 
 .collection-microscopy {
-  --collection-bg: url("../../images/collections/microscopy.png");
+  --collection-bg: url("../../images/collections/microscopy.jpeg");
 }
 
-.collection-photography-slides {
-  --collection-bg: url("../../images/collections/photography.png");
+.collection-photography {
+  --collection-bg: url("../../images/collections/photography.jpeg");
+}
+
+.collection-slides {
+  --collection-bg: url("../../images/collections/slides.jpeg");
 }
 
 .collection-cor-iphes {
-  --collection-bg: url("../../images/collections/COR-IPHES.png");
+  --collection-bg: url("../../images/collections/COR-IPHES.jpeg");
 }
 
 .collection-tapho-iphes {
-  --collection-bg: url("../../images/collections/TaphoIPHES.png");
+  --collection-bg: url("../../images/collections/TaphoIPHES.jpeg");
 }
 
 .collection-micropalaeontology {
-  --collection-bg: url("../../images/collections/micropalaeontology.png");
+  --collection-bg: url("../../images/collections/micropalaeontology.jpeg");
 }
 
 .collection-palaeoanthropology {
-  --collection-bg: url("../../images/collections/palaeoanthropology.png");
+  --collection-bg: url("../../images/collections/palaeoanthropologyne.jpeg");
 }
 
 .collection-technotheque {
-  --collection-bg: url("../../images/collections/Technotheque.png");
+  --collection-bg: url("../../images/collections/Technotheque.jpeg");
 }
 
 .collection-microwear {
-  --collection-bg: url("../../images/collections/microwear.png");
+  --collection-bg: url("../../images/collections/microwear.jpeg");
 }
 
 .collection-archaeopalaeontology {
-  --collection-bg: url("../../images/collections/archaeopalaeontology.png");
+  --collection-bg: url("../../images/collections/archaeopalaeontology.jpeg");
 }
 
 .collection-card h3 {
