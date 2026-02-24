@@ -346,27 +346,119 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.16);
   border-radius: 14px;
   padding: 0.95rem;
+  padding-bottom: 3.2rem;
   background: var(--subcartouche-bg);
+  position: relative;
+  overflow: hidden;
   display: grid;
   gap: 0.75rem;
   align-content: start;
+  min-height: 180px;
+}
+
+.collection-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--collection-bg, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  transition: opacity 220ms ease;
+  z-index: 0;
+}
+
+.collection-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 1;
+}
+
+.collection-card:hover::before {
+  opacity: 1;
+}
+
+.collection-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.collection-anthracology {
+  --collection-bg: url("../../images/collections/anthracology.png");
+}
+
+.collection-carpology {
+  --collection-bg: url("../../images/collections/carpology.png");
+}
+
+.collection-palynology {
+  --collection-bg: url("../../images/collections/palynology.png");
+}
+
+.collection-traceology {
+  --collection-bg: url("../../images/collections/traceology.png");
+}
+
+.collection-lithotheque {
+  --collection-bg: url("../../images/collections/lithotheque.png");
+}
+
+.collection-microscopy {
+  --collection-bg: url("../../images/collections/microscopy.png");
+}
+
+.collection-photography-slides {
+  --collection-bg: url("../../images/collections/photography.png");
+}
+
+.collection-cor-iphes {
+  --collection-bg: url("../../images/collections/COR-IPHES.png");
+}
+
+.collection-tapho-iphes {
+  --collection-bg: url("../../images/collections/TaphoIPHES.png");
+}
+
+.collection-micropalaeontology {
+  --collection-bg: url("../../images/collections/micropalaeontology.png");
+}
+
+.collection-palaeoanthropology {
+  --collection-bg: url("../../images/collections/palaeoanthropology.png");
+}
+
+.collection-technotheque {
+  --collection-bg: url("../../images/collections/Technotheque.png");
+}
+
+.collection-microwear {
+  --collection-bg: url("../../images/collections/microwear.png");
+}
+
+.collection-archaeopalaeontology {
+  --collection-bg: url("../../images/collections/archaeopalaeontology.png");
 }
 
 .collection-card h3 {
   margin: 0;
   font-size: 1rem;
-  color: #000000;
+  color: #ffffff;
 }
 
 .collection-desc {
   margin: 0;
-  color: rgba(0, 0, 0, 0.82);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 0.92rem;
   line-height: 1.45;
 }
 
 .collection-access {
-  justify-self: start;
+  position: absolute;
+  right: 0.95rem;
+  bottom: 0.95rem;
   border: 1px solid #000000;
   border-radius: 999px;
   background: #ffffff;
@@ -376,7 +468,8 @@ a {
   line-height: 1;
   padding: 0.52rem 0.9rem;
   cursor: pointer;
-  margin-top: auto;
+  margin-top: 0;
+  z-index: 3;
 }
 
 .collection-access:hover {
