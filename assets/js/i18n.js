@@ -2,100 +2,76 @@
   const SUPPORTED_LANGS = ["es", "ca", "en"];
   const DEFAULT_LANG = "es";
   const STORAGE_KEY = "iphes-hub-lang";
+  const CONTACT_EMAIL = "info@iphes.cat";
 
   const translations = {
     es: {
-      "a11y.skip": "Ir al contenido",
-      "header.kicker": "Programa estrategico",
-      "header.title": "Collection Digitization of IPHES-CERCA",
+      "meta.title": "Hub IPHES-CERCA | Digitalizacion de colecciones de IPHES-CERCA",
+      "meta.description": "Hub institucional del proyecto de digitalizacion de colecciones de IPHES-CERCA.",
+      "header.title": "Digitalizacion de colecciones de IPHES-CERCA",
       "header.baseline": "Una one-page de proyecto para dirigir la transformacion digital de las colecciones, compartir avances y hacer visibles los resultados.",
-      "nav.vision": "Vision",
-      "nav.metrics": "Cifras clave",
-      "nav.roadmapVisual": "Roadmap",
-      "hero.ctaPrimary": "Ver roadmap visual",
-      "hero.ctaSecondary": "Ver cifras clave",
-      "metrics.title": "A few numbers",
+      "metrics.title": "Algunas cifras",
       "metrics.body": "Vista sintetica de los indicadores que estructuran la gestion y la comunicacion del proyecto.",
       "metrics.card1.value": "3 anos",
       "metrics.card1.label": "Horizonte de planificacion",
-      "metrics.card2.value": "15 Collections",
-      "metrics.card2.label": "Archaeological, reference, experimental",
+      "metrics.card2.value": "15 colecciones",
+      "metrics.card2.label": "Arqueologicas, de referencia y experimentales",
       "metrics.card4.value": "1 hub",
       "metrics.card4.label": "Punto de acceso unificado",
-      "collections.title": "Collections overview",
-      "collections.access": "Access",
-      "hood.title": "Under the Hood",
-      "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies.",
-      "hood.cta": "more info",
-      "vision.title": "Propuesta de valor",
-      "vision.body": "Ejecucion estructurada para pasar de la coleccion fisica a un activo cientifico interoperable.",
-      "vision.card1.title": "Estructurar",
-      "vision.card1.body": "Inventario, priorizacion y normalizacion de datos para flujos de trabajo robustos.",
-      "vision.card2.title": "Producir",
-      "vision.card2.body": "Digitalizacion progresiva, protocolos controlados y calidad en cada etapa.",
-      "vision.card3.title": "Difundir",
-      "vision.card3.body": "Valorizacion cientifica e institucional con entregables legibles y regulares.",
-      "roadmapVisual.title": "Roadmap visual",
+      "collections.title": "Panoramica de colecciones",
+      "collections.desc": "Descripcion temporal de referencia para esta coleccion.",
+      "collections.access": "Acceder",
+      "collections.requestSubject": "Solicitud de acceso a coleccion",
+      "hood.title": "Infraestructura y datos",
+      "hood.body": "La digitalizacion de colecciones se apoya en soluciones avanzadas de gestion de datos e infraestructura; explora las colecciones a continuacion.",
+      "hood.cta": "Ver colecciones",
+      "roadmapVisual.title": "Hoja de ruta visual",
       "roadmapVisual.body": "Infografia de fases para entender rapidamente los hitos principales del proyecto.",
-      "roadmapVisual.phase1.title": "Structuring",
+      "roadmapVisual.phase1.title": "Estructuracion",
       "roadmapVisual.phase1.body": "Auditoria de colecciones, priorizacion de lotes y definicion de estandares.",
-      "roadmapVisual.phase2.title": "Deployment",
-      "roadmapVisual.phase2.body": "Puesta en produccion de protocolos, escalado y seguimiento de indicadores.",
-      "roadmapVisual.phase3.title": "Consolidation",
+      "roadmapVisual.phase2.title": "Despliegue",
+      "roadmapVisual.phase2.body": "Puesta en marcha de protocolos, escalado y seguimiento de indicadores.",
+      "roadmapVisual.phase3.title": "Consolidacion",
       "roadmapVisual.phase3.body": "Consolidacion de entregables, difusion cientifica y mejora continua.",
-      "footer.note": "IPHES-CERCA · Landing de proyecto · Edicion one-page 2026"
+      "footer.address": "2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Espana) · info@iphes.cat | (+34) 977 943 003",
+      "footer.privacy": "Este sitio web no recopila datos y no utiliza cookies."
     },
     ca: {
-      "a11y.skip": "Anar al contingut",
-      "header.kicker": "Programa estratègic",
-      "header.title": "Collection Digitization of IPHES-CERCA",
-      "header.baseline": "Una one-page de projecte per dirigir la transformació digital de les col·leccions i fer visible l'avanç.",
-      "nav.vision": "Visió",
-      "nav.metrics": "Xifres clau",
-      "nav.roadmapVisual": "Roadmap",
-      "hero.ctaPrimary": "Veure la roadmap visual",
-      "hero.ctaSecondary": "Veure les xifres clau",
-      "metrics.title": "A few numbers",
-      "metrics.body": "Vista sintètica dels indicadors que estructuren la gestió i la comunicació del projecte.",
+      "meta.title": "Hub IPHES-CERCA | Digitalitzacio de col.leccions d'IPHES-CERCA",
+      "meta.description": "Hub institucional del projecte de digitalitzacio de col.leccions d'IPHES-CERCA.",
+      "header.title": "Digitalitzacio de col.leccions d'IPHES-CERCA",
+      "header.baseline": "Una one-page de projecte per dirigir la transformacio digital de les col.leccions, compartir avanc i fer visibles els resultats.",
+      "metrics.title": "Algunes xifres",
+      "metrics.body": "Vista sintetica dels indicadors que estructuren la gestio i la comunicacio del projecte.",
       "metrics.card1.value": "3 anys",
-      "metrics.card1.label": "Horitzó de planificació",
-      "metrics.card2.value": "15 Collections",
-      "metrics.card2.label": "Archaeological, reference, experimental",
+      "metrics.card1.label": "Horitzo de planificacio",
+      "metrics.card2.value": "15 col.leccions",
+      "metrics.card2.label": "Arqueologiques, de referencia i experimentals",
       "metrics.card4.value": "1 hub",
-      "metrics.card4.label": "Punt d'accés unificat",
-      "collections.title": "Collections overview",
-      "collections.access": "Access",
-      "hood.title": "Under the Hood",
-      "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies.",
-      "hood.cta": "more info",
-      "vision.title": "Proposta de valor",
-      "vision.body": "Execució estructurada per passar de la col·lecció física a un actiu científic interoperable.",
-      "vision.card1.title": "Estructurar",
-      "vision.card1.body": "Inventari, priorització i normalització de dades per a fluxos de treball robustos.",
-      "vision.card2.title": "Produir",
-      "vision.card2.body": "Digitalització progressiva, protocols controlats i qualitat seguida a cada etapa.",
-      "vision.card3.title": "Difondre",
-      "vision.card3.body": "Valorització científica i institucional amb lliurables regulars i llegibles.",
-      "roadmapVisual.title": "Roadmap visual",
-      "roadmapVisual.body": "Infografia de fases per entendre ràpidament els principals jalons del projecte.",
-      "roadmapVisual.phase1.title": "Structuring",
-      "roadmapVisual.phase1.body": "Auditoria de col·leccions, priorització de lots i definició d'estàndards.",
-      "roadmapVisual.phase2.title": "Deployment",
-      "roadmapVisual.phase2.body": "Posada en producció de protocols, escalat i seguiment d'indicadors.",
-      "roadmapVisual.phase3.title": "Consolidation",
-      "roadmapVisual.phase3.body": "Consolidació de lliurables, difusió científica i millora contínua.",
-      "footer.note": "IPHES-CERCA · Landing de projecte · Edició one-page 2026"
+      "metrics.card4.label": "Punt d'acces unificat",
+      "collections.title": "Panoramica de col.leccions",
+      "collections.desc": "Descripcio temporal de referencia per a aquesta col.leccio.",
+      "collections.access": "Accedir",
+      "collections.requestSubject": "Sol.licitud d'acces a col.leccio",
+      "hood.title": "Infraestructura i dades",
+      "hood.body": "La digitalitzacio de col.leccions es basa en solucions avancades de gestio de dades i infraestructura; explora les col.leccions a continuacio.",
+      "hood.cta": "Veure col.leccions",
+      "roadmapVisual.title": "Full de ruta visual",
+      "roadmapVisual.body": "Infografia de fases per entendre rapidament les principals fites del projecte.",
+      "roadmapVisual.phase1.title": "Estructuracio",
+      "roadmapVisual.phase1.body": "Auditoria de col.leccions, prioritzacio de lots i definicio d'estandards.",
+      "roadmapVisual.phase2.title": "Desplegament",
+      "roadmapVisual.phase2.body": "Posada en marxa de protocols, escalat i seguiment d'indicadors.",
+      "roadmapVisual.phase3.title": "Consolidacio",
+      "roadmapVisual.phase3.body": "Consolidacio de lliurables, difusio cientifica i millora continua.",
+      "footer.address": "2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Espanya) · info@iphes.cat | (+34) 977 943 003",
+      "footer.privacy": "Aquest lloc web no recopila dades i no utilitza cookies."
     },
     en: {
-      "a11y.skip": "Skip to content",
-      "header.kicker": "Strategic program",
-      "header.title": "Collection Digitization of IPHES-CERCA",
+      "meta.title": "Hub IPHES-CERCA | IPHES-CERCA Collections Digitization",
+      "meta.description": "Institutional hub for the IPHES-CERCA collections digitization project.",
+      "header.title": "IPHES-CERCA Collections Digitization",
       "header.baseline": "Discover how IPHES-CERCA is digitizing its collections through the Maria de Maeztu 2025-2029 project led by the laboratory.",
-      "nav.vision": "Vision",
-      "nav.metrics": "Key figures",
-      "nav.roadmapVisual": "Roadmap",
-      "hero.ctaPrimary": "View visual roadmap",
-      "hero.ctaSecondary": "View key figures",
       "metrics.title": "A few numbers",
       "metrics.body": "A concise indicator set to steer execution and communicate project progress.",
       "metrics.card1.value": "3 years",
@@ -105,18 +81,12 @@
       "metrics.card4.value": "1 hub",
       "metrics.card4.label": "Unified access point",
       "collections.title": "Collections overview",
+      "collections.desc": "Temporary placeholder description for this collection.",
       "collections.access": "Access",
-      "hood.title": "Under the Hood",
-      "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies.",
-      "hood.cta": "more info",
-      "vision.title": "Value proposition",
-      "vision.body": "Structured execution to turn physical collections into interoperable scientific assets.",
-      "vision.card1.title": "Structure",
-      "vision.card1.body": "Inventory, prioritization, and data normalization for robust workflows.",
-      "vision.card2.title": "Produce",
-      "vision.card2.body": "Progressive digitization, controlled protocols, and quality tracking at every step.",
-      "vision.card3.title": "Disseminate",
-      "vision.card3.body": "Scientific and institutional visibility through regular, readable deliverables.",
+      "collections.requestSubject": "Collection access request",
+      "hood.title": "Infrastructure and Data",
+      "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies; explore the collections below.",
+      "hood.cta": "View collections",
       "roadmapVisual.title": "Visual roadmap",
       "roadmapVisual.body": "Phase-based infographic to quickly understand core project milestones.",
       "roadmapVisual.phase1.title": "Structuring",
@@ -125,7 +95,8 @@
       "roadmapVisual.phase2.body": "Protocol rollout, scaling, and indicator-driven monitoring.",
       "roadmapVisual.phase3.title": "Consolidation",
       "roadmapVisual.phase3.body": "Deliverable consolidation, scientific dissemination, and continuous improvement.",
-      "footer.note": "IPHES-CERCA · Project landing · One-page edition 2026"
+      "footer.address": "2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Spain) · info@iphes.cat | (+34) 977 943 003",
+      "footer.privacy": "This website does not collect your data and no cookies are used."
     }
   };
 
@@ -145,8 +116,13 @@
 
   function applyTranslations(lang) {
     const safeLang = resolveLanguage(lang);
+    const metaDescription = document.querySelector("meta[name='description']");
 
     document.documentElement.lang = safeLang;
+    document.title = t("meta.title", safeLang);
+    if (metaDescription) {
+      metaDescription.setAttribute("content", t("meta.description", safeLang));
+    }
 
     document.querySelectorAll("[data-i18n]").forEach((node) => {
       const key = node.getAttribute("data-i18n");
@@ -220,9 +196,24 @@
     });
   }
 
+  function registerCollectionAccessButtons() {
+    document.querySelectorAll(".collection-access[type='button']").forEach((button) => {
+      button.addEventListener("click", () => {
+        const collectionName =
+          button.getAttribute("data-collection") ||
+          button.closest(".collection-card")?.querySelector("h3")?.textContent?.trim() ||
+          "Collection";
+        const subjectPrefix = t("collections.requestSubject");
+        const subject = encodeURIComponent(`${subjectPrefix} - ${collectionName}`);
+        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}`;
+      });
+    });
+  }
+
   function init() {
     registerLanguageButtons();
     registerLanguageMenu();
+    registerCollectionAccessButtons();
     applyTranslations(getStoredLanguage());
   }
 
