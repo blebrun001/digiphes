@@ -12,7 +12,6 @@ Minimal one-page static website for the IPHES-CERCA project.
 - `index.html`
 - `assets/css/styles.css`
 - `assets/js/i18n.js`
-- `assets/js/app.js`
 
 ## Run Locally
 ```bash

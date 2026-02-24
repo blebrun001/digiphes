@@ -17,7 +17,6 @@
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer src="assets/js/i18n.js"></script>
-    <script defer src="assets/js/app.js"></script>
   </head>
   <body>
     <div class="page-shell">
@@ -28,9 +27,9 @@
             <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
           </button>
           <div class="lang-menu" data-lang-menu>
-            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">ES</button>
-            <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">CA</button>
-            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
+            <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">Català</button>
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
           </div>
         </div>
       </header>
@@ -212,7 +211,14 @@
       </main>
 
       <footer class="site-footer">
-        <p data-i18n="footer.note">IPHES-CERCA · Hub de projet · Version initiale V1</p>
+        <div class="footer-logos" aria-label="Partenaires">
+          <img src="images/logos/LogoIphes.png" alt="Logo IPHES-CERCA" class="footer-logo" />
+          <img src="images/logos/LogoCerca.png" alt="Logo CERCA" class="footer-logo" />
+          <img src="images/logos/Logo-Ministerio-FECYT-Blanco.svg" alt="Logo Ministerio" class="footer-logo" />
+          <img src="images/logos/LogoMdM.png" alt="Logo MdM" class="footer-logo" />
+        </div>
+        <p>2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (España) · Info@Iphes.cat | (+34) 977 943 003</p>
+        <p>This Website Does Not Collect Your Data, No Cookies Are Used.</p>
       </footer>
     </div>
   </body>

@@ -464,20 +464,6 @@ a {
   color: #000000;
 }
 
-.md-block :first-child {
-  margin-top: 0;
-}
-
-.md-block h1,
-.md-block h2,
-.md-block h3 {
-  margin-top: 1rem;
-}
-
-.md-block ul {
-  padding-left: 1.2rem;
-}
-
 .muted {
   color: var(--muted);
 }
@@ -486,6 +472,28 @@ a {
   padding: 0.5rem 0 1.8rem;
   color: #ffffff;
   font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.45rem, 1.2vw, 1rem);
+  margin-bottom: 0.6rem;
+}
+
+.footer-logo {
+  display: block;
+  width: auto;
+  height: clamp(28px, 3.5vw, 40px);
+  max-width: min(24vw, 170px);
+  object-fit: contain;
+}
+
+.site-footer p + p {
+  margin-top: 0.35rem;
 }
 
 :focus-visible {
@@ -503,15 +511,11 @@ a {
   }
 
   #metrics,
+  #under-the-hood,
   #collections-overview,
   #vision,
   #roadmap-visual {
     grid-column: 1 / -1;
-  }
-
-  #roadmap,
-  #news {
-    grid-column: span 6;
   }
 
   .metrics-grid {

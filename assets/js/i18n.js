@@ -12,8 +12,6 @@
       "nav.vision": "Vision",
       "nav.metrics": "Cifras clave",
       "nav.roadmapVisual": "Roadmap",
-      "nav.roadmap": "Calendario",
-      "nav.news": "Entregables",
       "hero.ctaPrimary": "Ver roadmap visual",
       "hero.ctaSecondary": "Ver cifras clave",
       "metrics.title": "A few numbers",
@@ -45,11 +43,7 @@
       "roadmapVisual.phase2.body": "Puesta en produccion de protocolos, escalado y seguimiento de indicadores.",
       "roadmapVisual.phase3.title": "Consolidation",
       "roadmapVisual.phase3.body": "Consolidacion de entregables, difusion cientifica y mejora continua.",
-      "roadmap.title": "Calendario provisional (3 anos)",
-      "news.title": "Entregables y preguntas",
-      "footer.note": "IPHES-CERCA · Landing de proyecto · Edicion one-page 2026",
-      "content.loading": "Cargando...",
-      "content.comingSoon": "Contenido proximamente"
+      "footer.note": "IPHES-CERCA · Landing de proyecto · Edicion one-page 2026"
     },
     ca: {
       "a11y.skip": "Anar al contingut",
@@ -59,8 +53,6 @@
       "nav.vision": "Visió",
       "nav.metrics": "Xifres clau",
       "nav.roadmapVisual": "Roadmap",
-      "nav.roadmap": "Calendari",
-      "nav.news": "Lliurables",
       "hero.ctaPrimary": "Veure la roadmap visual",
       "hero.ctaSecondary": "Veure les xifres clau",
       "metrics.title": "A few numbers",
@@ -92,11 +84,7 @@
       "roadmapVisual.phase2.body": "Posada en producció de protocols, escalat i seguiment d'indicadors.",
       "roadmapVisual.phase3.title": "Consolidation",
       "roadmapVisual.phase3.body": "Consolidació de lliurables, difusió científica i millora contínua.",
-      "roadmap.title": "Calendari provisional (3 anys)",
-      "news.title": "Lliurables i preguntes",
-      "footer.note": "IPHES-CERCA · Landing de projecte · Edició one-page 2026",
-      "content.loading": "S'està carregant...",
-      "content.comingSoon": "Contingut properament"
+      "footer.note": "IPHES-CERCA · Landing de projecte · Edició one-page 2026"
     },
     en: {
       "a11y.skip": "Skip to content",
@@ -106,8 +94,6 @@
       "nav.vision": "Vision",
       "nav.metrics": "Key figures",
       "nav.roadmapVisual": "Roadmap",
-      "nav.roadmap": "Schedule",
-      "nav.news": "Deliverables",
       "hero.ctaPrimary": "View visual roadmap",
       "hero.ctaSecondary": "View key figures",
       "metrics.title": "A few numbers",
@@ -139,11 +125,7 @@
       "roadmapVisual.phase2.body": "Protocol rollout, scaling, and indicator-driven monitoring.",
       "roadmapVisual.phase3.title": "Consolidation",
       "roadmapVisual.phase3.body": "Deliverable consolidation, scientific dissemination, and continuous improvement.",
-      "roadmap.title": "Provisional schedule (3 years)",
-      "news.title": "Deliverables and questions",
-      "footer.note": "IPHES-CERCA · Project landing · One-page edition 2026",
-      "content.loading": "Loading...",
-      "content.comingSoon": "Content coming soon"
+      "footer.note": "IPHES-CERCA · Project landing · One-page edition 2026"
     }
   };
 
