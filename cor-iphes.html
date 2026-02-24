@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COR-IPHES Collection | Pilot Page</title>
+    <meta
+      name="description"
+      content="Pilot page for the COR-IPHES collection with placeholder sections."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/i18n.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="header-brand">
+          <a href="index.html" aria-label="Go to homepage">
+            <img src="images/logos/white.png" alt="IPHES-CERCA" class="header-logo" />
+          </a>
+          <p class="header-brand-title" data-i18n="header.title">IPHES-CERCA Collections Digitization</p>
+        </div>
+        <div class="header-actions">
+          <div class="lang-switcher">
+            <button class="lang-toggle" type="button" aria-label="Change language" aria-expanded="false" data-lang-toggle>
+              <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
+            </button>
+            <div class="lang-menu" data-lang-menu>
+              <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
+              <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">Català</button>
+              <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" class="landing collection-pilot-page">
+        <section class="panel collection-pilot-section section-overview">
+          <h2>Overview</h2>
+          <p>
+            The COR-IPHES (Osteological Reference Collection of IPHES-CERCA) is a comprehensive comparative anatomy collection housed at the Institut Català de Paleoecologia Humana i Evolució Social in Tarragona, Spain.
+          </p>
+        </section>
+
+        <section class="panel collection-pilot-section section-content">
+          <h2>Content</h2>
+          <p>
+            It comprises over 300 complete or partial skeletons of mammals and birds from Europe and Africa, including both common taxa and rare or endangered species such as the Iberian lynx (Lynx pardinus), European bison (Bison bonasus), and bearded vulture (Gypaetus barbatus). The specimens were obtained ethically through natural deaths, accidental causes, or institutional donations, and have been carefully prepared and catalogued for research and teaching purposes.
+          </p>
+        </section>
+
+        <section class="panel collection-pilot-section section-team">
+          <h2>Team</h2>
+          <div class="team-list">
+            <div class="team-member">Lead</div>
+            <div class="team-member">Curator</div>
+            <div class="team-member">Data</div>
+            <div class="team-member">More</div>
+          </div>
+        </section>
+
+        <section class="panel collection-pilot-section section-progress">
+          <h2>Digitization Progress</h2>
+          <p class="progress-value">15.2%</p>
+          <div class="progress-track" role="img" aria-label="Digitization progress 15.2 percent">
+            <span class="progress-fill"></span>
+          </div>
+        </section>
+
+        <section class="panel collection-pilot-section section-formats">
+          <h2>Formats</h2>
+          <div class="chip-row">
+            <span class="chip">OBJ</span>
+            <span class="chip">MTL</span>
+            <span class="chip">PNG</span>
+            <span class="chip">CSV</span>
+          </div>
+        </section>
+
+        <section class="panel collection-pilot-section section-volume">
+          <h2>Volume</h2>
+          <p class="volume-value">78 GB</p>
+          <p class="volume-sub">12185 files</p>
+        </section>
+
+        <section class="panel collection-pilot-section section-ontologies">
+          <h2>Used Ontologies</h2>
+          <div class="chip-row">
+            <span class="chip">CIDOC CRM</span>
+            <span class="chip">CRMsci</span>
+            <span class="chip">Darwin Core</span>
+          </div>
+        </section>
+
+        <section class="panel collection-pilot-section section-consult">
+          <h2>Consult</h2>
+          <div class="consult-layout">
+            <div class="consult-viewer">
+              <iframe
+                class="consult-iframe"
+                src="https://cor.iphes.cat/app/index.html"
+                title="COR-IPHES website"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+              ></iframe>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel collection-pilot-section section-internal-links">
+          <h2>Internal Links</h2>
+          <div class="chip-row">
+            <a href="#" class="chip chip-link">Database</a>
+            <a href="#" class="chip chip-link">Website</a>
+            <a href="#" class="chip chip-link">Lab Docs</a>
+          </div>
+        </section>
+
+        <section class="panel collection-pilot-section section-external-links">
+          <h2>External Links</h2>
+          <div class="chip-row">
+            <a href="#" class="chip chip-link">CORA-RDR</a>
+            <a href="#" class="chip chip-link">GBIF</a>
+            <a href="#" class="chip chip-link">UBERON</a>
+            <a href="#" class="chip chip-link">GitHub</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-logos" aria-label="Partners">
+          <img src="images/logos/LogoIphes.png" alt="Logo IPHES-CERCA" class="footer-logo" />
+          <img src="images/logos/LogoCerca.png" alt="Logo CERCA" class="footer-logo" />
+          <img src="images/logos/Logo-Ministerio-FECYT-Blanco.svg" alt="Logo Ministerio" class="footer-logo" />
+          <img src="images/logos/LogoMdM.png" alt="Logo MdM" class="footer-logo" />
+        </div>
+        <p>2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Spain)</p>
+      </footer>
+    </div>
+  </body>
+</html>
