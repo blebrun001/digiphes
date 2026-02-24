@@ -11,7 +11,7 @@
       "header.title": "Digitalizacion de colecciones de IPHES-CERCA",
       "header.baseline": "Una one-page de proyecto para dirigir la transformacion digital de las colecciones, compartir avances y hacer visibles los resultados.",
       "hero.cta": "learn more",
-      "metrics.title": "Key numbers",
+      "metrics.title": "Key Numbers",
       "metrics.body": "",
       "metrics.card1.value": "3 anos",
       "metrics.card1.label": "Horizonte de planificacion",
@@ -43,7 +43,7 @@
       "header.title": "Digitalitzacio de col.leccions d'IPHES-CERCA",
       "header.baseline": "Una one-page de projecte per dirigir la transformacio digital de les col.leccions, compartir avanc i fer visibles els resultats.",
       "hero.cta": "learn more",
-      "metrics.title": "Key numbers",
+      "metrics.title": "Key Numbers",
       "metrics.body": "",
       "metrics.card1.value": "3 anys",
       "metrics.card1.label": "Horitzo de planificacio",
@@ -75,7 +75,7 @@
       "header.title": "IPHES-CERCA Collections Digitization",
       "header.baseline": "Discover how IPHES-CERCA is digitizing its collections through the Maria de Maeztu 2025-2029 project led by the laboratory.",
       "hero.cta": "learn more",
-      "metrics.title": "Key numbers",
+      "metrics.title": "Key Numbers",
       "metrics.body": "",
       "metrics.card1.value": "3 years",
       "metrics.card1.label": "Planning horizon",
@@ -83,14 +83,14 @@
       "metrics.card2.label": "Archaeological, reference, experimental",
       "metrics.card4.value": "1 hub",
       "metrics.card4.label": "Unified access point",
-      "collections.title": "Collections overview",
+      "collections.title": "Collections Overview",
       "collections.desc": "Temporary placeholder description for this collection.",
       "collections.access": "Access",
       "collections.requestSubject": "Collection access request",
-      "hood.title": "Under the hood",
+      "hood.title": "Under the Hood",
       "hood.body": "Collections digitization relies on advanced data management solutions and infrastructure technologies. To learn more, clic the button below.",
       "hood.cta": "learn more",
-      "roadmapVisual.title": "Visual roadmap",
+      "roadmapVisual.title": "Visual Roadmap",
       "roadmapVisual.body": "Phase-based infographic to quickly understand core project milestones.",
       "roadmapVisual.phase1.title": "Structuring",
       "roadmapVisual.phase1.body": "Collection audit, batch prioritization, and standards definition.",
@@ -200,17 +200,7 @@
   }
 
   function registerCollectionAccessButtons() {
-    document.querySelectorAll(".collection-access[type='button']").forEach((button) => {
-      button.addEventListener("click", () => {
-        const collectionName =
-          button.getAttribute("data-collection") ||
-          button.closest(".collection-card")?.querySelector("h3")?.textContent?.trim() ||
-          "Collection";
-        const subjectPrefix = t("collections.requestSubject");
-        const subject = encodeURIComponent(`${subjectPrefix} - ${collectionName}`);
-        window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}`;
-      });
-    });
+    // Intentionally no-op: only COR-IPHES access should be interactive.
   }
 
   function registerScrollButtons() {
