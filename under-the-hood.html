@@ -69,37 +69,76 @@
           </p>
         </section>
         <section class="panel">
-          <h2 data-i18n="underHood.crm.title">CIDOC-CRM as a shared semantic backbone</h2>
+          <h2>CIDOC-CRM as a Shared Semantic Backbone</h2>
           <div class="hood-keypoints">
-            <p class="hood-keypoint" data-step="1" data-i18n="underHood.crm.p1">
-              Collection diversity requires a common metamodel to avoid siloed schemas and semantic conflicts across
-              domains.
-            </p>
-            <p class="hood-keypoint" data-step="2" data-i18n="underHood.crm.p2">
-              CIDOC-CRM provides that backbone with stable classes and properties (for example E22, E53, P46, P108) to
-              align objects, contexts, events, and actors in one RDF graph.
-            </p>
-            <p class="hood-keypoint" data-step="3" data-i18n="underHood.crm.p3">
-              This alignment enables cross-collection SPARQL querying and consistent reasoning while preserving
-              scientific specificity.
-            </p>
+            <article class="hood-keypoint" data-step="1">
+              <p>
+                IPHES-CERCA manages collections that differ in material nature, disciplinary traditions, documentation
+                practices, and levels of digital maturity. In the absence of a shared semantic framework, each
+                collection tends to develop its own schema, terminology, and internal logic. Over time, this
+                fragmentation produces conceptual silos, limits interoperability, complicates cross-collection
+                analysis, and increases the risk of semantic ambiguity. Ensuring coherence across domains therefore
+                requires a common metamodel capable of structuring diversity without suppressing disciplinary
+                specificity.
+              </p>
+            </article>
+            <article class="hood-keypoint" data-step="2">
+              <p>
+                CIDOC-CRM provides such a framework by offering a domain-agnostic ontology designed to describe
+                cultural heritage and scientific knowledge through an event-centric approach. It defines stable
+                classes, such as E22 Man-Made Object, E53 Place, or E39 Actor, and explicit properties like P46 is
+                composed of or P108 has produced, all formally aligned with RDF. This structure makes relationships
+                between objects, contexts, events, and actors explicit and machine-interpretable. By mapping
+                collection-specific data to CIDOC-CRM, heterogeneous datasets become part of a unified and
+                interoperable knowledge graph while retaining conceptual clarity.
+              </p>
+            </article>
+            <article class="hood-keypoint" data-step="3">
+              <p>
+                The result is semantic alignment without loss of scientific precision. Once collections share the same
+                backbone, cross-collection SPARQL querying becomes possible, logical reasoning can be applied across
+                datasets, and integration with international research infrastructures such as ARIADNE or EOSC is
+                facilitated. At the same time, CIDOC-CRM operates as a high-level semantic structure, allowing
+                disciplinary vocabularies and detailed domain-specific descriptions to remain in place. The backbone
+                harmonizes data at a conceptual level while preserving the granularity required for rigorous research.
+              </p>
+            </article>
           </div>
         </section>
         <section class="panel">
-          <h2 data-i18n="underHood.semantic.title">CRM extensions, ontologies, and FAIRness</h2>
+          <h2>CRM extensions, ontologies, and FAIRness</h2>
           <div class="hood-keypoints">
-            <p class="hood-keypoint" data-step="1" data-i18n="underHood.semantic.p1">
-              The CIDOC-CRM core is extended with CRMarchaeo, CRMsci, and CRMgeo to model archaeology, material
-              science, and geospatial dimensions with precision.
-            </p>
-            <p class="hood-keypoint" data-step="2" data-i18n="underHood.semantic.p2">
-              Controlled vocabularies and reference ontologies (Getty AAT, PeriodO, UBERON, Darwin Core) are reused in
-              RDF/SKOS/OWL.
-            </p>
-            <p class="hood-keypoint" data-step="3" data-i18n="underHood.semantic.p3">
-              Persistent URIs, provenance-aware named graphs, SHACL validation, and SPARQL access reinforce Findable,
-              Accessible, Interoperable, and Reusable.
-            </p>
+            <article class="hood-keypoint" data-step="1">
+              <p>
+                The CIDOC-CRM core model is extended through domain-specific ontological modules such as CRMarchaeo,
+                CRMsci, and CRMgeo. These extensions allow the modelling of archaeological stratigraphy and excavation
+                processes, scientific observation and material analysis, and geospatial information with conceptual
+                precision. Instead of remaining at a general descriptive level, the data model can therefore represent
+                excavation events, sampling procedures, laboratory measurements, and spatial relationships in a
+                formally structured and interoperable way. This layered ontology approach preserves methodological rigor
+                while maintaining alignment with the core CRM structure.
+              </p>
+            </article>
+            <article class="hood-keypoint" data-step="2">
+              <p>
+                Controlled vocabularies and reference ontologies are reused to ensure semantic consistency and
+                cross-domain interoperability. Resources such as Getty AAT, PeriodO, UBERON, and Darwin Core are
+                integrated using RDF, SKOS, or OWL representations. Rather than redefining terms locally, the project
+                aligns its entities with established community standards, enabling shared meaning, multilingual
+                consistency, and external linking. This strategy strengthens semantic clarity and allows the
+                collections to participate in broader disciplinary and international knowledge graphs.
+              </p>
+            </article>
+            <article class="hood-keypoint" data-step="3">
+              <p>
+                Finally, technical FAIR enablers are embedded at the infrastructure level. Persistent URIs ensure
+                stable identification of entities; provenance-aware named graphs document the origin and transformation
+                of data; SHACL validation guarantees structural and logical consistency; and SPARQL endpoints provide
+                transparent and machine-actionable access. Together, these mechanisms operationalize the FAIR
+                principles, making data Findable, Accessible, Interoperable, and Reusable, while preserving
+                scientific traceability and long-term sustainability.
+              </p>
+            </article>
           </div>
         </section>
       </main>

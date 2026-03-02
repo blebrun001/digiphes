@@ -331,6 +331,29 @@ a {
   max-width: none;
 }
 
+.hood-keypoint-title {
+  margin: 0 0 0.55rem;
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
+.hood-keypoint p {
+  margin: 0 0 0.45rem;
+}
+
+.hood-keypoint p:last-child {
+  margin-bottom: 0;
+}
+
+.hood-keypoint ul {
+  margin: 0 0 0.55rem;
+  padding-left: 1rem;
+}
+
+.hood-keypoint li + li {
+  margin-top: 0.2rem;
+}
+
 .hood-keypoint::before {
   content: attr(data-step);
   position: absolute;
