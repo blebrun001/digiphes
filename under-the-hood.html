@@ -43,115 +43,45 @@
 
       <main id="main-content" class="landing under-hood-page">
         <section class="panel">
-          <h2 data-i18n="underHood.intro.title">Under the hood: understand the architecture in 5 minutes</h2>
+          <h2 data-i18n="underHood.intro.title">1) RDF architecture for laboratory-wide digitization</h2>
           <p class="section-intro" data-i18n="underHood.intro.p1">
-            The project follows a "100% graph" approach: data are organized in RDF, structured with CIDOC-CRM and its
-            extensions, then explored through a web interface connected to a SPARQL endpoint.
+            IPHES-CERCA collections digitization requires an architecture where all laboratory data (inventory,
+            analyses, provenance, conservation, and digital assets) are represented in RDF.
           </p>
           <p class="section-intro" data-i18n="underHood.intro.p2">
-            This page follows a pedagogical path: from concept to implementation, ending with practical constraints
-            observed in the MWE.
+            RDF (Resource Description Framework) models information as subject-predicate-object triples. Serialized in
+            Turtle and queried with SPARQL, this graph model integrates heterogeneous datasets with explicit semantic
+            traceability.
           </p>
         </section>
-
         <section class="panel">
-          <h2 data-i18n="underHood.rdf.title">1) Why use a graph database (RDF)?</h2>
-          <p data-i18n="underHood.rdf.p1">
-            RDF stores information as subject-predicate-object triples. This format aligns naturally with CIDOC-CRM,
-            where classes become nodes and properties become explicit relations.
-          </p>
-          <p data-i18n="underHood.rdf.p2">
-            Main benefits: fine-grained semantic modeling, interoperability (ARIADNE, Europeana, EOSC), and possible
-            automatic inference in some cases.
-          </p>
-          <p data-i18n="underHood.rdf.p3">
-            Main tradeoff: higher technical complexity for day-to-day laboratory operations.
-          </p>
-        </section>
-
-        <section class="panel">
-          <h2 data-i18n="underHood.crm.title">2) How CIDOC-CRM becomes machine-actionable</h2>
+          <h2 data-i18n="underHood.crm.title">2) CIDOC-CRM as a shared semantic backbone</h2>
           <p data-i18n="underHood.crm.p1">
-            In RDF implementation, CIDOC-CRM acts as a formal vocabulary. Objects, events, and places are RDF classes;
-            CRM links become RDF relations between these classes.
+            Because the laboratory manages highly diverse collections, a common reference model is required to ensure
+            semantic consistency and cross-domain interoperability.
           </p>
           <p data-i18n="underHood.crm.p2">
-            Simplified example: a lithic tool, its stratigraphic unit, excavation, traceological observation, and
-            digitization activity become nodes. "Found by", "consists of", "observes", and "documents" become explicit
-            links.
+            CIDOC-CRM provides that backbone by defining stable classes and properties (for example E22, E53, P46,
+            P108) to align objects, contexts, events, and actors in a single RDF graph.
           </p>
           <p data-i18n="underHood.crm.p3">
-            Result: RDF does not introduce a competing model; it materializes CRM reasoning as a machine-processable
-            graph.
+            This alignment enables unified querying and reasoning across collections while preserving domain-level
+            specificity.
           </p>
         </section>
-
         <section class="panel">
-          <h2 data-i18n="underHood.evidence.title">3) Chain of evidence (from field to dissemination)</h2>
-          <p data-i18n="underHood.evidence.p1">
-            The chain of evidence describes the progressive construction of scientific information, from observable
-            material fact to interpretation and published data.
-          </p>
-          <p data-i18n="underHood.evidence.p2">
-            Each intermediate step remains traceable: linked, dated, attributed, and revisable assertions. It is not a
-            single definitive proof, but a documented sequence.
-          </p>
-        </section>
-
-        <section class="panel">
-          <h2 data-i18n="underHood.mwe.title">4) The MWE: concrete technical architecture</h2>
-          <p data-i18n="underHood.mwe.p1">
-            The Minimum Working Example validates this end-to-end approach with Apache Jena Fuseki (SPARQL server) and
-            TDB2 (persistent RDF storage).
-          </p>
-          <p data-i18n="underHood.mwe.p2">
-            Data are modeled in Turtle and queried with SPARQL. Infrastructure is containerized with Docker Compose for
-            reproducible deployment of both triplestore and application layer.
-          </p>
-          <p data-i18n="underHood.mwe.p3">
-            Important: MWE data are placeholders and do not represent validated production data.
-          </p>
-        </section>
-
-        <section class="panel">
-          <h2 data-i18n="underHood.semantic.title">5) Semantic layer: ontologies, vocabularies, and graph separation</h2>
+          <h2 data-i18n="underHood.semantic.title">3) CRM extensions, ontologies, and FAIRness</h2>
           <p data-i18n="underHood.semantic.p1">
-            The ontological core is based on CIDOC-CRM v7.1.3, CRMarchaeo, and CRMsci, loaded into the triplestore in
-            RDF/OWL.
+            To capture collection-specific requirements, the core model is extended with CIDOC-CRM extensions such as
+            CRMarchaeo, CRMsci, and CRMgeo.
           </p>
           <p data-i18n="underHood.semantic.p2">
-            Reference resources (UBERON, Darwin Core, Getty AAT, PeriodO, Neotoma, OME) are integrated as separate
-            named graphs to preserve provenance and versioning.
+            The stack also uses controlled vocabularies and reference ontologies (for example Getty AAT, PeriodO,
+            UBERON, Darwin Core), published in RDF/SKOS/OWL.
           </p>
           <p data-i18n="underHood.semantic.p3">
-            The architecture distinguishes TBox (ontologies), SKOS (controlled vocabularies), and ABox (instance
-            data). This separation supports reasoning, SHACL validation, and model evolution without app code changes.
-          </p>
-        </section>
-
-        <section class="panel">
-          <h2 data-i18n="underHood.interface.title">6) Interface and validation</h2>
-          <p data-i18n="underHood.interface.p1">
-            The Node.js / Express interface acts as a proxy to SPARQL and provides entity exploration, predefined
-            queries, and graph visualizations.
-          </p>
-          <p data-i18n="underHood.interface.p2">
-            SHACL is used to validate structural and semantic constraints in RDF graphs.
-          </p>
-        </section>
-
-        <section class="panel">
-          <h2 data-i18n="underHood.takeaways.title">7) Key takeaways from the MWE</h2>
-          <p data-i18n="underHood.takeaways.p1">
-            1. Implementation is demanding: it requires specialized skills and multiple technical components.
-          </p>
-          <p data-i18n="underHood.takeaways.p2">
-            2. Conceptual framing must be rigorous: reference model, ontologies, and vocabularies must be precisely
-            defined.
-          </p>
-          <p data-i18n="underHood.takeaways.p3">
-            3. UX is harder to design, because a holistic graph approach increases information types, options, and
-            interaction patterns.
+            Persistent URIs, provenance-aware named graphs, SPARQL querying, and SHACL validation collectively
+            reinforce FAIR principles (Findable, Accessible, Interoperable, Reusable).
           </p>
         </section>
       </main>
