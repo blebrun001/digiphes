@@ -795,7 +795,8 @@ a {
   #metrics,
   #under-the-hood,
   #collections-overview,
-  #roadmap-visual {
+  #roadmap-visual,
+  #what-is-digitalization {
     grid-column: 1 / -1;
   }
 
