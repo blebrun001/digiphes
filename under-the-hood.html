@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPHES-CERCA | Under the hood</title>
+    <meta
+      name="description"
+      content="Technical page of the project: RDF architecture, chain of evidence, ontologies, and deployed MWE."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/i18n.js"></script>
+  </head>
+  <body data-i18n-page="underHood">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="header-brand">
+          <a href="index.html" aria-label="Retour à l'accueil">
+            <img src="images/logos/white.png" alt="IPHES-CERCA" class="header-logo" />
+          </a>
+          <p class="header-brand-title" data-i18n="header.title">IPHES-CERCA Collections Digitization</p>
+        </div>
+        <div class="header-actions">
+          <div class="lang-switcher">
+            <button class="lang-toggle" type="button" aria-label="Change language" aria-expanded="false" data-lang-toggle>
+              <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
+            </button>
+            <div class="lang-menu" data-lang-menu>
+              <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
+              <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">Català</button>
+              <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" class="landing under-hood-page">
+        <section class="panel">
+          <h2 data-i18n="underHood.intro.title">Under the hood: understand the architecture in 5 minutes</h2>
+          <p class="section-intro" data-i18n="underHood.intro.p1">
+            The project follows a "100% graph" approach: data are organized in RDF, structured with CIDOC-CRM and its
+            extensions, then explored through a web interface connected to a SPARQL endpoint.
+          </p>
+          <p class="section-intro" data-i18n="underHood.intro.p2">
+            This page follows a pedagogical path: from concept to implementation, ending with practical constraints
+            observed in the MWE.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.rdf.title">1) Why use a graph database (RDF)?</h2>
+          <p data-i18n="underHood.rdf.p1">
+            RDF stores information as subject-predicate-object triples. This format aligns naturally with CIDOC-CRM,
+            where classes become nodes and properties become explicit relations.
+          </p>
+          <p data-i18n="underHood.rdf.p2">
+            Main benefits: fine-grained semantic modeling, interoperability (ARIADNE, Europeana, EOSC), and possible
+            automatic inference in some cases.
+          </p>
+          <p data-i18n="underHood.rdf.p3">
+            Main tradeoff: higher technical complexity for day-to-day laboratory operations.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.crm.title">2) How CIDOC-CRM becomes machine-actionable</h2>
+          <p data-i18n="underHood.crm.p1">
+            In RDF implementation, CIDOC-CRM acts as a formal vocabulary. Objects, events, and places are RDF classes;
+            CRM links become RDF relations between these classes.
+          </p>
+          <p data-i18n="underHood.crm.p2">
+            Simplified example: a lithic tool, its stratigraphic unit, excavation, traceological observation, and
+            digitization activity become nodes. "Found by", "consists of", "observes", and "documents" become explicit
+            links.
+          </p>
+          <p data-i18n="underHood.crm.p3">
+            Result: RDF does not introduce a competing model; it materializes CRM reasoning as a machine-processable
+            graph.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.evidence.title">3) Chain of evidence (from field to dissemination)</h2>
+          <p data-i18n="underHood.evidence.p1">
+            The chain of evidence describes the progressive construction of scientific information, from observable
+            material fact to interpretation and published data.
+          </p>
+          <p data-i18n="underHood.evidence.p2">
+            Each intermediate step remains traceable: linked, dated, attributed, and revisable assertions. It is not a
+            single definitive proof, but a documented sequence.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.mwe.title">4) The MWE: concrete technical architecture</h2>
+          <p data-i18n="underHood.mwe.p1">
+            The Minimum Working Example validates this end-to-end approach with Apache Jena Fuseki (SPARQL server) and
+            TDB2 (persistent RDF storage).
+          </p>
+          <p data-i18n="underHood.mwe.p2">
+            Data are modeled in Turtle and queried with SPARQL. Infrastructure is containerized with Docker Compose for
+            reproducible deployment of both triplestore and application layer.
+          </p>
+          <p data-i18n="underHood.mwe.p3">
+            Important: MWE data are placeholders and do not represent validated production data.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.semantic.title">5) Semantic layer: ontologies, vocabularies, and graph separation</h2>
+          <p data-i18n="underHood.semantic.p1">
+            The ontological core is based on CIDOC-CRM v7.1.3, CRMarchaeo, and CRMsci, loaded into the triplestore in
+            RDF/OWL.
+          </p>
+          <p data-i18n="underHood.semantic.p2">
+            Reference resources (UBERON, Darwin Core, Getty AAT, PeriodO, Neotoma, OME) are integrated as separate
+            named graphs to preserve provenance and versioning.
+          </p>
+          <p data-i18n="underHood.semantic.p3">
+            The architecture distinguishes TBox (ontologies), SKOS (controlled vocabularies), and ABox (instance
+            data). This separation supports reasoning, SHACL validation, and model evolution without app code changes.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.interface.title">6) Interface and validation</h2>
+          <p data-i18n="underHood.interface.p1">
+            The Node.js / Express interface acts as a proxy to SPARQL and provides entity exploration, predefined
+            queries, and graph visualizations.
+          </p>
+          <p data-i18n="underHood.interface.p2">
+            SHACL is used to validate structural and semantic constraints in RDF graphs.
+          </p>
+        </section>
+
+        <section class="panel">
+          <h2 data-i18n="underHood.takeaways.title">7) Key takeaways from the MWE</h2>
+          <p data-i18n="underHood.takeaways.p1">
+            1. Implementation is demanding: it requires specialized skills and multiple technical components.
+          </p>
+          <p data-i18n="underHood.takeaways.p2">
+            2. Conceptual framing must be rigorous: reference model, ontologies, and vocabularies must be precisely
+            defined.
+          </p>
+          <p data-i18n="underHood.takeaways.p3">
+            3. UX is harder to design, because a holistic graph approach increases information types, options, and
+            interaction patterns.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-logos" aria-label="Partenaires">
+          <img src="images/logos/LogoIphes.png" alt="Logo IPHES-CERCA" class="footer-logo" />
+          <img src="images/logos/LogoCerca.png" alt="Logo CERCA" class="footer-logo" />
+          <img src="images/logos/Logo-Ministerio-FECYT-Blanco.svg" alt="Logo Ministerio" class="footer-logo" />
+          <img src="images/logos/LogoMdM.png" alt="Logo MdM" class="footer-logo" />
+        </div>
+        <p data-i18n="footer.address">2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Espana) · info@iphes.cat | (+34) 977 943 003</p>
+        <p data-i18n="footer.privacy">Este sitio web no recopila datos y no utiliza cookies.</p>
+      </footer>
+    </div>
+  </body>
+</html>
