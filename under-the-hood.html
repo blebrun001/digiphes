@@ -44,29 +44,37 @@
       <main id="main-content" class="landing under-hood-page">
         <section class="panel">
           <h2 data-i18n="underHood.intro.title">RDF architecture for laboratory-wide digitization</h2>
-          <p class="section-intro" data-i18n="underHood.intro.p1">
-            IPHES-CERCA digitizes highly heterogeneous collections (archaeological, palaeontological, reference,
-            digital), whose scientific value depends not only on the objects themselves but also on their provenance,
-            contextual associations, and full research traceability. The challenge is therefore not merely to store
-            digital files, but to preserve and formalize the relationships that make these collections scientifically
-            meaningful.
-          </p>
-          <p class="section-intro" data-i18n="underHood.intro.p2">
-            To address this, the project adopts RDF (Resource Description Framework), a W3C standard designed to
-            represent knowledge as a graph. Instead of organizing information in rigid tables, RDF models data as
-            simple, explicit statements called triples: a subject, a predicate, and an object. Each entity and each
-            relationship is identified by a persistent URI, ensuring that data are unambiguous, linkable, and
-            interpretable by machines across systems and institutions.
-          </p>
-          <p class="section-intro" data-i18n="underHood.intro.p3">
-            This graph-based model is particularly suited to the IPHES-CERCA context. It allows complex relationships
-            between objects, contexts, actors, and research activities to be expressed without structural constraints
-            imposed by traditional relational databases. Data are serialized in Turtle format for readability and
-            standardization, stored in a triplestore optimized for graph structures, and queried using SPARQL, a
-            powerful language specifically designed to retrieve and combine interconnected information. Together, these
-            components enable interoperable integration, fine-grained querying, and long-term reusability of
-            collection data.
-          </p>
+          <div class="hood-keypoints">
+            <article class="hood-keypoint" data-step="1">
+              <p class="section-intro" data-i18n="underHood.intro.p1">
+                IPHES-CERCA digitizes highly heterogeneous collections (archaeological, palaeontological, reference,
+                digital), whose scientific value depends not only on the objects themselves but also on their
+                provenance, contextual associations, and full research traceability. The challenge is therefore not
+                merely to store digital files, but to preserve and formalize the relationships that make these
+                collections scientifically meaningful.
+              </p>
+            </article>
+            <article class="hood-keypoint" data-step="2">
+              <p class="section-intro" data-i18n="underHood.intro.p2">
+                To address this, the project adopts RDF (Resource Description Framework), a W3C standard designed to
+                represent knowledge as a graph. Instead of organizing information in rigid tables, RDF models data as
+                simple, explicit statements called triples: a subject, a predicate, and an object. Each entity and
+                each relationship is identified by a persistent URI, ensuring that data are unambiguous, linkable, and
+                interpretable by machines across systems and institutions.
+              </p>
+            </article>
+            <article class="hood-keypoint" data-step="3">
+              <p class="section-intro" data-i18n="underHood.intro.p3">
+                This graph-based model is particularly suited to the IPHES-CERCA context. It allows complex
+                relationships between objects, contexts, actors, and research activities to be expressed without
+                structural constraints imposed by traditional relational databases. Data are serialized in Turtle
+                format for readability and standardization, stored in a triplestore optimized for graph structures,
+                and queried using SPARQL, a powerful language specifically designed to retrieve and combine
+                interconnected information. Together, these components enable interoperable integration, fine-grained
+                querying, and long-term reusability of collection data.
+              </p>
+            </article>
+          </div>
         </section>
         <section class="panel">
           <h2>CIDOC-CRM as a Shared Semantic Backbone</h2>
