@@ -314,6 +314,26 @@ a {
   margin-bottom: 0.9rem;
 }
 
+#research .research-search-form {
+  display: flex;
+  justify-content: center;
+}
+
+#research .research-search-input {
+  width: min(640px, 100%);
+  border: 1px solid #c8cfd9;
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+#research .research-search-input:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
 .hood-keypoints {
   display: grid;
   gap: 0.7rem;
@@ -377,6 +397,18 @@ a {
 
 .collections-panel {
   background: var(--subcartouche-bg);
+}
+
+.collections-entry-panel {
+  background: var(--subcartouche-bg);
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  width: 100%;
+}
+
+.collections-entry-panel h2 {
+  margin-bottom: 0;
 }
 
 .hood-panel {
@@ -858,6 +890,7 @@ a {
 
   #metrics,
   #under-the-hood,
+  #collections-entry,
   #collections-overview,
   #roadmap-visual,
   #what-is-digitalization {
