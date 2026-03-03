@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <script defer src="assets/js/i18n.js"></script>
+    <script defer src="assets/js/explore-filters.js"></script>
   </head>
   <body data-i18n-page="explorePage">
     <div class="page-shell">
@@ -68,6 +69,42 @@
               placeholder="Search in collections..."
             />
           </form>
+          <div class="research-filters" data-research-filters>
+            <p class="research-filters-label">Filter(s):</p>
+            <div class="research-filter-group" data-filter-group="collections">
+              <button
+                type="button"
+                class="research-filter-toggle"
+                data-filter-toggle
+                aria-expanded="false"
+                aria-controls="collections-filter-panel"
+              >
+                Collections
+              </button>
+              <div class="research-filter-panel" id="collections-filter-panel" data-filter-panel>
+                <p class="research-filter-title">Select one or more collections</p>
+                <ul class="research-filter-list" data-filter-options="collections"></ul>
+              </div>
+            </div>
+
+            <div class="research-filter-group" data-filter-group="sites">
+              <button
+                type="button"
+                class="research-filter-toggle"
+                data-filter-toggle
+                aria-expanded="false"
+                aria-controls="sites-filter-panel"
+              >
+                Archaeological sites
+              </button>
+              <div class="research-filter-panel" id="sites-filter-panel" data-filter-panel>
+                <p class="research-filter-title">Select one or more sites</p>
+                <ul class="research-filter-list" data-filter-options="sites"></ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="research-active-filters" data-active-filters></div>
         </section>
       </main>
 
