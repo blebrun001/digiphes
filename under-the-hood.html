@@ -22,14 +22,21 @@
     <div class="page-shell">
       <header class="site-header">
         <div class="header-brand">
-          <a href="index.html" aria-label="Retour à l'accueil">
+          <a href="index.html" aria-label="Retour à l'accueil" data-i18n-attr="aria-label:header.homeAria">
             <img src="images/logos/white.png" alt="IPHES-CERCA" class="header-logo" />
           </a>
           <p class="header-brand-title" data-i18n="header.title">IPHES-CERCA Collections Digitization</p>
         </div>
         <div class="header-actions">
           <div class="lang-switcher">
-            <button class="lang-toggle" type="button" aria-label="Change language" aria-expanded="false" data-lang-toggle>
+            <button
+              class="lang-toggle"
+              type="button"
+              aria-label="Change language"
+              aria-expanded="false"
+              data-lang-toggle
+              data-i18n-attr="aria-label:lang.toggleAria"
+            >
               <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
             </button>
             <div class="lang-menu" data-lang-menu>
@@ -77,10 +84,10 @@
           </div>
         </section>
         <section class="panel">
-          <h2>CIDOC-CRM as a Shared Semantic Backbone</h2>
+          <h2 data-i18n="underHood.crm.title">CIDOC-CRM as a Shared Semantic Backbone</h2>
           <div class="hood-keypoints">
             <article class="hood-keypoint" data-step="1">
-              <p>
+              <p data-i18n="underHood.crm.p1">
                 In the absence of a shared semantic framework, each collection tends to develop its own schema,
                 terminology, and internal logic. Over time, this fragmentation produces conceptual silos, limits
                 interoperability, complicates cross-collection analysis, and increases the risk of semantic ambiguity.
@@ -89,7 +96,7 @@
               </p>
             </article>
             <article class="hood-keypoint" data-step="2">
-              <p>
+              <p data-i18n="underHood.crm.p2">
                 CIDOC-CRM provides such a framework by offering a domain-agnostic ontology designed to describe
                 cultural heritage and scientific knowledge through an event-centric approach. It defines stable
                 classes, such as E22 Man-Made Object, E53 Place, or E39 Actor, and explicit properties like P46 is
@@ -100,7 +107,7 @@
               </p>
             </article>
             <article class="hood-keypoint" data-step="3">
-              <p>
+              <p data-i18n="underHood.crm.p3">
                 The result is semantic alignment without loss of scientific precision. Once collections share the same
                 backbone, cross-collection SPARQL querying becomes possible, logical reasoning can be applied across
                 datasets, and integration with international research infrastructures such as ARIADNE or EOSC is
@@ -112,10 +119,10 @@
           </div>
         </section>
         <section class="panel">
-          <h2>CRM extensions, ontologies, and FAIRness</h2>
+          <h2 data-i18n="underHood.semantic.title">CRM extensions, ontologies, and FAIRness</h2>
           <div class="hood-keypoints">
             <article class="hood-keypoint" data-step="1">
-              <p>
+              <p data-i18n="underHood.semantic.p1">
                 The CIDOC-CRM core model is extended through domain-specific ontological modules such as CRMarchaeo,
                 CRMsci, and CRMgeo. These extensions allow the modelling of archaeological stratigraphy and excavation
                 processes, scientific observation and material analysis, and geospatial information with conceptual
@@ -126,7 +133,7 @@
               </p>
             </article>
             <article class="hood-keypoint" data-step="2">
-              <p>
+              <p data-i18n="underHood.semantic.p2">
                 Controlled vocabularies and reference ontologies are reused to ensure semantic consistency and
                 cross-domain interoperability. Resources such as Getty AAT, PeriodO, UBERON, and Darwin Core are
                 integrated using RDF, SKOS, or OWL representations. Rather than redefining terms locally, the project
@@ -136,7 +143,7 @@
               </p>
             </article>
             <article class="hood-keypoint" data-step="3">
-              <p>
+              <p data-i18n="underHood.semantic.p3">
                 Finally, technical FAIR enablers are embedded at the infrastructure level. Persistent URIs ensure
                 stable identification of entities; provenance-aware named graphs document the origin and transformation
                 of data; SHACL validation guarantees structural and logical consistency; and SPARQL endpoints provide
@@ -150,7 +157,7 @@
       </main>
 
       <footer class="site-footer">
-        <div class="footer-logos" aria-label="Partenaires">
+        <div class="footer-logos" aria-label="Partenaires" data-i18n-attr="aria-label:footer.partnersAria">
           <img src="images/logos/LogoIphes.png" alt="Logo IPHES-CERCA" class="footer-logo" />
           <img src="images/logos/LogoCerca.png" alt="Logo CERCA" class="footer-logo" />
           <img src="images/logos/Logo-Ministerio-FECYT-Blanco.svg" alt="Logo Ministerio" class="footer-logo" />
