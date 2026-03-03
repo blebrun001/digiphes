@@ -233,11 +233,10 @@ a {
 }
 
 .hero-actions {
-  position: absolute;
-  right: 0.95rem;
-  bottom: 0.95rem;
-  margin-top: 0;
+  position: static;
+  margin-top: 0.6rem;
   display: flex;
+  justify-content: center;
 }
 
 .cta,
@@ -958,7 +957,13 @@ a {
     justify-self: stretch;
   }
 
-  .hero-actions,
+  .hero-actions {
+    position: static;
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: center;
+  }
+
   .hood-actions {
     position: static;
     margin-top: 0.8rem;
