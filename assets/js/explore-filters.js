@@ -391,6 +391,7 @@
   }
 
   syncCreationDateRange();
+  renderResults([]);
 
   async function loadMockSearchData() {
     try {
@@ -438,7 +439,7 @@
     }
 
     if (resultsHeading) {
-      resultsHeading.textContent = `Results (${items.length})`;
+      resultsHeading.textContent = hasSearchRun ? `Results (${items.length})` : "Results";
     }
 
     let listRoot = resultsSection.querySelector("[data-results-list]");
@@ -550,18 +551,18 @@
   }
 
   function getUiLabel(key) {
-    const lang = document.documentElement.lang || "en";
     const labels = {
       noResults: {
-        en: "No results found.",
-        es: "No se han encontrado resultados.",
-        ca: "No s'han trobat resultats."
+        en: "no result to display",
+        es: "no result to display",
+        ca: "no result to display"
       }
     };
     const values = labels[key];
     if (!values) {
       return key;
     }
+    const lang = document.documentElement.lang || "en";
     return values[lang] || values.en;
   }
 

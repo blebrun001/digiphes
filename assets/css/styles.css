@@ -209,7 +209,7 @@ a {
 
 .hero {
   grid-column: 1 / -1;
-  min-height: clamp(380px, 64vh, 560px);
+  min-height: clamp(190px, 64vh, 280px);
   border: none;
   border-radius: calc(var(--radius) + 3px);
   padding: clamp(1rem, 4vw, 2rem);
@@ -385,7 +385,13 @@ a {
 
 #results .results-empty {
   margin: 0;
-  color: #4b5563;
+  width: 100%;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #000000;
 }
 
 #results .results-grid {
@@ -450,10 +456,10 @@ a {
   width: min(640px, 100%);
   border: 1px solid #c8cfd9;
   border-radius: 999px;
-  padding: 0.7rem 1rem;
+  padding: 0.42rem 1rem;
   font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.2;
+  font-size: 0.82rem;
+  line-height: 1;
 }
 
 #research .research-search-input:focus-visible {
