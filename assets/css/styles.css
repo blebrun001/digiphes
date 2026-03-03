@@ -40,6 +40,7 @@ body {
   background: var(--cartouche-bg);
   border: none;
   border-radius: 11px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
   padding: clamp(14px, 2vw, 24px);
   padding-inline: 0.5rem;
   padding-bottom: 0.5rem;
@@ -298,6 +299,7 @@ a {
   background: var(--subcartouche-bg);
   border: none;
   border-radius: var(--radius);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   padding: clamp(1rem, 2.1vw, 1.4rem);
   color: #000000;
 }
