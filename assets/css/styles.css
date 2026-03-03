@@ -957,6 +957,24 @@ a {
   .hero-highlight {
     justify-self: stretch;
   }
+
+  .hero-actions,
+  .hood-actions {
+    position: static;
+    margin-top: 0.8rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .collection-access {
+    position: static;
+    margin-top: 0.7rem;
+    justify-self: end;
+  }
+
+  .hood-panel {
+    padding-bottom: clamp(1rem, 2.1vw, 1.4rem);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
