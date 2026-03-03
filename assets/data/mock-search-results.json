@@ -1,0 +1,202 @@
+[
+  {
+    "id": "OBJ-OST-001",
+    "inventoryCode": "OST-ATP-001",
+    "title": "Cervid mandible fragment",
+    "title_i18n": {
+      "en": "Cervid mandible fragment",
+      "es": "Fragmento de mandíbula de cérvido",
+      "ca": "Fragment de mandíbula de cèrvid"
+    },
+    "description": "Cervid mandible fragment with cut marks documented in a Lower Paleolithic faunal assemblage.",
+    "description_i18n": {
+      "en": "Cervid mandible fragment with cut marks documented in a Lower Paleolithic faunal assemblage.",
+      "es": "Fragmento de mandíbula de cérvido con marcas de corte documentado en un conjunto faunístico del Paleolítico inferior.",
+      "ca": "Fragment de mandíbula de cèrvid amb marques de tall documentat en un conjunt faunístic del paleolític inferior."
+    },
+    "collections": "Zooarchaeology (COR-IPHES)",
+    "sites": "Atapuerca",
+    "type": "3D model",
+    "creationDate": 2018
+  },
+  {
+    "id": "OBJ-OST-002",
+    "inventoryCode": "OST-ORC-014",
+    "title": "Large herbivore shaft fragment",
+    "title_i18n": {
+      "en": "Large herbivore shaft fragment",
+      "es": "Fragmento diafisario de gran herbívoro",
+      "ca": "Fragment diafisari de gran herbívor"
+    },
+    "description": "Long-bone shaft attributed to a large herbivore, showing possible anthropogenic breakage.",
+    "description_i18n": {
+      "en": "Long-bone shaft attributed to a large herbivore, showing possible anthropogenic breakage.",
+      "es": "Diáfisis de hueso largo atribuida a un gran herbívoro, con posible fracturación antrópica.",
+      "ca": "Diàfisi d'os llarg atribuïda a un gran herbívor, amb possible fracturació antròpica."
+    },
+    "collections": "Zooarchaeology (TaphoIPHES)",
+    "sites": "Orce",
+    "type": "Macrophotography",
+    "creationDate": 2020
+  },
+  {
+    "id": "OBJ-OST-003",
+    "inventoryCode": "OST-BOE-021",
+    "title": "Bison metapodial",
+    "title_i18n": {
+      "en": "Bison metapodial",
+      "es": "Metápodo de bisonte",
+      "ca": "Metàpode de bisó"
+    },
+    "description": "Bison metapodial from a lower stratigraphic unit with light taphonomic surface alteration.",
+    "description_i18n": {
+      "en": "Bison metapodial from a lower stratigraphic unit with light taphonomic surface alteration.",
+      "es": "Metápodo de bisonte procedente de una unidad estratigráfica inferior con alteración tafonómica superficial leve.",
+      "ca": "Metàpode de bisó procedent d'una unitat estratigràfica inferior amb alteració tafonòmica superficial lleu."
+    },
+    "collections": "Zooarchaeology (COR-IPHES)",
+    "sites": "El Barranc de La Boella",
+    "type": "Text document",
+    "creationDate": 2016
+  },
+  {
+    "id": "OBJ-OST-004",
+    "inventoryCode": "OST-ABA-007",
+    "title": "Caprine phalanx",
+    "title_i18n": {
+      "en": "Caprine phalanx",
+      "es": "Falange de caprino",
+      "ca": "Falange de caprí"
+    },
+    "description": "Isolated caprine phalanx associated with an Upper Paleolithic faunal reference set.",
+    "description_i18n": {
+      "en": "Isolated caprine phalanx associated with an Upper Paleolithic faunal reference set.",
+      "es": "Falange aislada de caprino asociada a un conjunto de referencia faunística del Paleolítico superior.",
+      "ca": "Falange aïllada de caprí associada a un conjunt de referència faunística del paleolític superior."
+    },
+    "collections": "Zooarchaeology (TaphoIPHES)",
+    "sites": "Abauntz",
+    "type": "Microphotography",
+    "creationDate": 2022
+  },
+  {
+    "id": "OBJ-LIT-001",
+    "inventoryCode": "LIT-ROM-032",
+    "title": "Flint biface",
+    "title_i18n": {
+      "en": "Flint biface",
+      "es": "Bifaz de sílex",
+      "ca": "Bifaç de sílex"
+    },
+    "description": "Shaped flint biface with well-preserved active edges, likely Acheulean.",
+    "description_i18n": {
+      "en": "Shaped flint biface with well-preserved active edges, likely Acheulean.",
+      "es": "Bifaz tallado en sílex con filos activos bien conservados, probablemente achelense.",
+      "ca": "Bifaç tallat en sílex amb vores actives ben conservades, probablement acheulià."
+    },
+    "collections": "Lithotheque (LithIPHES)",
+    "sites": "Abric Romaní",
+    "type": "3D model",
+    "creationDate": 2021
+  },
+  {
+    "id": "OBJ-LIT-002",
+    "inventoryCode": "LIT-CAT-011",
+    "title": "Levallois flake",
+    "title_i18n": {
+      "en": "Levallois flake",
+      "es": "Lasca Levallois",
+      "ca": "Lasca Levallois"
+    },
+    "description": "Levallois flake with a faceted platform, produced within a prepared-core reduction sequence.",
+    "description_i18n": {
+      "en": "Levallois flake with a faceted platform, produced within a prepared-core reduction sequence.",
+      "es": "Lasca Levallois con talón facetado, producida dentro de una secuencia de talla con núcleo preparado.",
+      "ca": "Lasca Levallois amb taló facetat, produïda dins d'una seqüència de talla amb nucli preparat."
+    },
+    "collections": "Lithotheque (LithIPHES)",
+    "sites": "La Cativera",
+    "type": "Macrophotography",
+    "creationDate": 2019
+  },
+  {
+    "id": "OBJ-LIT-003",
+    "inventoryCode": "LIT-GRA-024",
+    "title": "Convergent scraper",
+    "title_i18n": {
+      "en": "Convergent scraper",
+      "es": "Raspador convergente",
+      "ca": "Raspador convergent"
+    },
+    "description": "Convergent scraper on flake with continuous distal retouch, typical of Mousterian contexts.",
+    "description_i18n": {
+      "en": "Convergent scraper on flake with continuous distal retouch, typical of Mousterian contexts.",
+      "es": "Raspador convergente sobre lasca con retoque distal continuo, típico de contextos musteriences.",
+      "ca": "Raspador convergent sobre lasca amb retoc distal continu, típic de contextos mosterians."
+    },
+    "collections": "Traceology",
+    "sites": "Cova Gran",
+    "type": "Microphotography",
+    "creationDate": 2024
+  },
+  {
+    "id": "OBJ-LIT-004",
+    "inventoryCode": "LIT-FRE-018",
+    "title": "Discoid core",
+    "title_i18n": {
+      "en": "Discoid core",
+      "es": "Núcleo discoide",
+      "ca": "Nucli discoïdal"
+    },
+    "description": "Quartzite discoid core showing centripetal removals and controlled volumetric management.",
+    "description_i18n": {
+      "en": "Quartzite discoid core showing centripetal removals and controlled volumetric management.",
+      "es": "Núcleo discoide de cuarcita con extracciones centrípetas y control volumétrico.",
+      "ca": "Nucli discoïdal de quarsita amb extraccions centrípetes i control volumètric."
+    },
+    "collections": "Lithotheque (LithIPHES)",
+    "sites": "Cova Freda",
+    "type": "Text document",
+    "creationDate": 2017
+  },
+  {
+    "id": "OBJ-LIT-005",
+    "inventoryCode": "LIT-MOL-029",
+    "title": "Retouched blade",
+    "title_i18n": {
+      "en": "Retouched blade",
+      "es": "Lámina retocada",
+      "ca": "Làmina retocada"
+    },
+    "description": "Retouched blade with direct marginal retouch, linked to a Late Magdalenian occupation layer.",
+    "description_i18n": {
+      "en": "Retouched blade with direct marginal retouch, linked to a Late Magdalenian occupation layer.",
+      "es": "Lámina retocada con retoque marginal directo, vinculada a un nivel de ocupación magdaleniense final.",
+      "ca": "Làmina retocada amb retoc marginal directe, vinculada a un nivell d'ocupació magdalenià final."
+    },
+    "collections": "Microwear",
+    "sites": "El Molí del Salt",
+    "type": "Slide",
+    "creationDate": 2023
+  },
+  {
+    "id": "OBJ-LIT-006",
+    "inventoryCode": "LIT-TOI-035",
+    "title": "Perforator on blade",
+    "title_i18n": {
+      "en": "Perforator on blade",
+      "es": "Perforador sobre lámina",
+      "ca": "Perforador sobre làmina"
+    },
+    "description": "Fine flint perforator on blade with a shaped distal tip used for perforation activities.",
+    "description_i18n": {
+      "en": "Fine flint perforator on blade with a shaped distal tip used for perforation activities.",
+      "es": "Perforador fino en sílex sobre lámina con punta distal conformada para actividades de perforación.",
+      "ca": "Perforador fi de sílex sobre làmina amb punta distal conformada per a activitats de perforació."
+    },
+    "collections": "Lithotheque (LithIPHES)",
+    "sites": "Coves del Toll i Toixoneres",
+    "type": "3D model",
+    "creationDate": 2015
+  }
+]
