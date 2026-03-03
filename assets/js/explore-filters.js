@@ -439,7 +439,8 @@
     }
 
     if (resultsHeading) {
-      resultsHeading.textContent = hasSearchRun ? `Results (${items.length})` : "Results";
+      const title = getUiLabel("resultsTitle");
+      resultsHeading.textContent = hasSearchRun ? `${title} (${items.length})` : title;
     }
 
     let listRoot = resultsSection.querySelector("[data-results-list]");
@@ -464,22 +465,40 @@
                 data-result-image
                 data-object-id="${escapeAttribute(getObjectImageId(item))}"
                 data-fallback-src="${escapeAttribute(getFallbackImageSource(item))}"
-                alt="${escapeAttribute(getLocalizedField(item, "title") || "Object image")}"
+                alt="${escapeAttribute(getLocalizedField(item, "title") || getUiLabel("objectImage"))}"
                 loading="lazy"
                 decoding="async"
               />
             </figure>
             <header class="research-result-header">
-              <h3>${escapeHtml(getLocalizedField(item, "title") || "Untitled object")}</h3>
+              <h3>${escapeHtml(getLocalizedField(item, "title") || getUiLabel("untitledObject"))}</h3>
             </header>
-            <div class="research-result-meta">
-              <p><strong>Inventory:</strong> ${escapeHtml(item.inventoryCode || "-")}</p>
-              <p><strong>Collection:</strong> ${escapeHtml(item.collections || "-")}</p>
-              <p><strong>Site:</strong> ${escapeHtml(item.sites || "-")}</p>
-              <p><strong>Type:</strong> ${escapeHtml(item.type || "-")}</p>
-              <p><strong>Creation date:</strong> ${escapeHtml(String(item.creationDate || "-"))}</p>
-            </div>
             <p class="research-result-description">${escapeHtml(getLocalizedField(item, "description"))}</p>
+            <dl class="research-result-meta">
+              <div class="research-result-meta-item">
+                <dt>${escapeHtml(getUiLabel("inventory"))}</dt>
+                <dd>${escapeHtml(item.inventoryCode || "-")}</dd>
+              </div>
+              <div class="research-result-meta-item">
+                <dt>${escapeHtml(getUiLabel("collection"))}</dt>
+                <dd>${escapeHtml(item.collections || "-")}</dd>
+              </div>
+              <div class="research-result-meta-item">
+                <dt>${escapeHtml(getUiLabel("site"))}</dt>
+                <dd>${escapeHtml(item.sites || "-")}</dd>
+              </div>
+              <div class="research-result-meta-item">
+                <dt>${escapeHtml(getUiLabel("type"))}</dt>
+                <dd>${escapeHtml(item.type || "-")}</dd>
+              </div>
+              <div class="research-result-meta-item research-result-meta-item-wide">
+                <dt>${escapeHtml(getUiLabel("creationDate"))}</dt>
+                <dd>${escapeHtml(String(item.creationDate || "-"))}</dd>
+              </div>
+            </dl>
+            <div class="research-result-actions">
+              <button type="button" class="research-result-consult cta">${escapeHtml(getUiLabel("consultAction"))}</button>
+            </div>
           </article>
         `
       )
@@ -553,9 +572,54 @@
   function getUiLabel(key) {
     const labels = {
       noResults: {
-        en: "no result to display",
-        es: "no result to display",
-        ca: "no result to display"
+        en: "No result to display",
+        es: "No hay resultados para mostrar",
+        ca: "No hi ha resultats per mostrar"
+      },
+      resultsTitle: {
+        en: "Results",
+        es: "Resultados",
+        ca: "Resultats"
+      },
+      untitledObject: {
+        en: "Untitled object",
+        es: "Objeto sin titulo",
+        ca: "Objecte sense titol"
+      },
+      objectImage: {
+        en: "Object image",
+        es: "Imagen del objeto",
+        ca: "Imatge de l'objecte"
+      },
+      inventory: {
+        en: "Inventory",
+        es: "Inventario",
+        ca: "Inventari"
+      },
+      collection: {
+        en: "Collection",
+        es: "Coleccion",
+        ca: "Colleccio"
+      },
+      site: {
+        en: "Site",
+        es: "Yacimiento",
+        ca: "Jaciment"
+      },
+      type: {
+        en: "Type",
+        es: "Tipo",
+        ca: "Tipus"
+      },
+      creationDate: {
+        en: "Creation date",
+        es: "Fecha de creacion",
+        ca: "Data de creacio"
+      },
+      consultAction: {
+        en: "consult",
+        es: "consult",
+        ca: "consult"
       }
     };
     const values = labels[key];
