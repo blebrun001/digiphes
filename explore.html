@@ -53,7 +53,7 @@
         <section class="panel">
           <h2 data-i18n="explorePage.placeholder.title">Explore Collections</h2>
           <p class="section-intro" data-i18n="explorePage.placeholder.body">
-            Placeholder block. Content for the Explore page will be added here.
+            Here you can explore the digitized collections via textual research.
           </p>
         </section>
 
@@ -68,6 +68,7 @@
               class="research-search-input"
               placeholder="Search in collections..."
             />
+            <button type="submit" class="research-search-submit">Search</button>
           </form>
           <div class="research-filters" data-research-filters>
             <p class="research-filters-label">Filter(s):</p>
@@ -102,9 +103,75 @@
                 <ul class="research-filter-list" data-filter-options="sites"></ul>
               </div>
             </div>
+
+            <div class="research-filter-group" data-filter-group="type">
+              <button
+                type="button"
+                class="research-filter-toggle"
+                data-filter-toggle
+                aria-expanded="false"
+                aria-controls="type-filter-panel"
+              >
+                Type
+              </button>
+              <div class="research-filter-panel" id="type-filter-panel" data-filter-panel>
+                <p class="research-filter-title">Select one or more types</p>
+                <ul class="research-filter-list" data-filter-options="type"></ul>
+              </div>
+            </div>
+
+            <div class="research-filter-group" data-filter-group="creation-date">
+              <button
+                type="button"
+                class="research-filter-toggle"
+                data-filter-toggle
+                aria-expanded="false"
+                aria-controls="creation-date-filter-panel"
+              >
+                Creation date
+              </button>
+              <div class="research-filter-panel" id="creation-date-filter-panel" data-filter-panel>
+                <p class="research-filter-title">Select a year range</p>
+                <div class="research-date-range" data-date-range>
+                  <div class="research-date-range-values">
+                    <span data-date-min-label>1980</span>
+                    <span>to</span>
+                    <span data-date-max-label>2026</span>
+                  </div>
+                  <div class="research-date-range-slider" data-date-slider>
+                    <div class="research-date-range-track" aria-hidden="true"></div>
+                    <div class="research-date-range-fill" data-date-range-fill aria-hidden="true"></div>
+                    <input
+                      type="range"
+                      min="1980"
+                      max="2026"
+                      value="1980"
+                      step="1"
+                      class="research-date-input research-date-input-min"
+                      data-date-min
+                      aria-label="Creation date minimum"
+                    />
+                    <input
+                      type="range"
+                      min="1980"
+                      max="2026"
+                      value="2026"
+                      step="1"
+                      class="research-date-input research-date-input-max"
+                      data-date-max
+                      aria-label="Creation date maximum"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="research-active-filters" data-active-filters></div>
+        </section>
+
+        <section id="results" class="panel">
+          <h2>Results</h2>
         </section>
       </main>
 
