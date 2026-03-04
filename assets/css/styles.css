@@ -697,6 +697,13 @@ a {
   margin-bottom: 0;
 }
 
+.collections-entry-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
 .hood-panel {
   background: var(--subcartouche-bg);
   position: relative;

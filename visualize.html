@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPHES-CERCA | Visualize collections</title>
+    <meta
+      name="description"
+      content="Visualization space for IPHES-CERCA collections."
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/i18n.js"></script>
+  </head>
+  <body data-i18n-page="visualizePage">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="header-brand">
+          <a href="index.html" aria-label="Go to homepage" data-i18n-attr="aria-label:header.homeAria">
+            <img src="images/logos/black.png" alt="IPHES-CERCA" class="header-logo" />
+          </a>
+          <p class="header-brand-title" data-i18n="header.title">IPHES-CERCA Collections Digitization</p>
+        </div>
+        <div class="header-actions">
+          <div class="lang-switcher">
+            <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
+            <label class="visually-hidden" for="lang-select">Language</label>
+            <select
+              id="lang-select"
+              class="lang-select"
+              data-lang-select
+              aria-label="Change language"
+              data-i18n-attr="aria-label:lang.toggleAria"
+            >
+              <option value="es">Español</option>
+              <option value="ca">Català</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <main id="main-content" class="landing under-hood-page">
+        <section id="visualize-intro" class="panel">
+          <h2 data-i18n="visualizePage.placeholder.title">Presentation</h2>
+          <p class="section-intro" data-i18n="visualizePage.placeholder.body">
+            Placeholder content for the future visualization introduction.
+          </p>
+        </section>
+
+        <section id="visualize" class="panel">
+          <h2 data-i18n="visualizePage.title">Visualize</h2>
+          <p class="section-intro" data-i18n="visualizePage.body">
+            This new page will host visual exploration tools for digitized collections.
+          </p>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-logos" aria-label="Partners" data-i18n-attr="aria-label:footer.partnersAria">
+          <img src="images/logos/LogoIphes.png" alt="Logo IPHES-CERCA" class="footer-logo" />
+          <img src="images/logos/LogoCerca.png" alt="Logo CERCA" class="footer-logo" />
+          <img src="images/logos/Logo-Ministerio-FECYT-Blanco.svg" alt="Logo Ministerio" class="footer-logo" />
+          <img src="images/logos/LogoMdM.png" alt="Logo MdM" class="footer-logo" />
+        </div>
+        <p data-i18n="footer.address">2026 - IPHES-CERCA Zona Educacional, 4, Campus Sescelades URV (Edifici W3), 43007 Tarragona (Spain) · info@iphes.cat | (+34) 977 943 003</p>
+        <p data-i18n="footer.privacy">This website does not collect your data and no cookies are used.</p>
+      </footer>
+    </div>
+  </body>
+</html>
