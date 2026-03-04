@@ -29,21 +29,19 @@
         </div>
         <div class="header-actions">
           <div class="lang-switcher">
-            <button
-              class="lang-toggle"
-              type="button"
+            <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
+            <label class="visually-hidden" for="lang-select">Language</label>
+            <select
+              id="lang-select"
+              class="lang-select"
+              data-lang-select
               aria-label="Change language"
-              aria-expanded="false"
-              data-lang-toggle
               data-i18n-attr="aria-label:lang.toggleAria"
             >
-              <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
-            </button>
-            <div class="lang-menu" data-lang-menu>
-              <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
-              <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">Català</button>
-              <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
-            </div>
+              <option value="es">Español</option>
+              <option value="ca">Català</option>
+              <option value="en">English</option>
+            </select>
           </div>
         </div>
       </header>

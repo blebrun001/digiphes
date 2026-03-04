@@ -431,70 +431,24 @@
       });
     });
 
-    document.querySelectorAll(".lang-btn").forEach((btn) => {
-      const active = btn.getAttribute("data-lang") === safeLang;
-      btn.classList.toggle("is-active", active);
-      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    document.querySelectorAll("[data-lang-select]").forEach((select) => {
+      if (select instanceof HTMLSelectElement) {
+        select.value = safeLang;
+      }
     });
 
     window.localStorage.setItem(STORAGE_KEY, safeLang);
     document.dispatchEvent(new CustomEvent("language:changed", { detail: { lang: safeLang } }));
   }
 
-  function registerLanguageButtons() {
-    document.querySelectorAll(".lang-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const nextLang = btn.getAttribute("data-lang");
-        applyTranslations(nextLang);
-      });
-    });
-  }
-
-  function registerLanguageMenu() {
-    const switcher = document.querySelector(".lang-switcher");
-    const toggle = document.querySelector("[data-lang-toggle]");
-    if (!switcher || !toggle) {
-      return;
-    }
-
-    function closeMenu() {
-      switcher.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-    }
-
-    function openMenu() {
-      switcher.classList.add("is-open");
-      toggle.setAttribute("aria-expanded", "true");
-      const firstOption = switcher.querySelector(".lang-menu .lang-btn");
-      if (firstOption) {
-        firstOption.focus();
-      }
-    }
-
-    toggle.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const isOpen = switcher.classList.contains("is-open");
-      if (isOpen) {
-        closeMenu();
+  function registerLanguageSelector() {
+    document.querySelectorAll("[data-lang-select]").forEach((select) => {
+      if (!(select instanceof HTMLSelectElement)) {
         return;
       }
-      openMenu();
-    });
-
-    document.addEventListener("click", (event) => {
-      if (!switcher.contains(event.target)) {
-        closeMenu();
-      }
-    });
-
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        closeMenu();
-      }
-    });
-
-    switcher.querySelectorAll(".lang-menu .lang-btn").forEach((btn) => {
-      btn.addEventListener("click", closeMenu);
+      select.addEventListener("change", () => {
+        applyTranslations(select.value);
+      });
     });
   }
 
@@ -519,8 +473,7 @@
   }
 
   function init() {
-    registerLanguageButtons();
-    registerLanguageMenu();
+    registerLanguageSelector();
     registerCollectionAccessButtons();
     registerScrollButtons();
     applyTranslations(getStoredLanguage());

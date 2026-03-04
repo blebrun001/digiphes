@@ -26,22 +26,20 @@
           <p class="header-brand-title" data-i18n="header.title">IPHES-CERCA Collections Digitization</p>
         </div>
         <div class="lang-switcher">
-          <button
-            class="lang-toggle"
-            type="button"
-            aria-label="Change language"
-            aria-expanded="false"
-            data-lang-toggle
-            data-i18n-attr="aria-label:lang.toggleAria"
-          >
             <i class="fa-solid fa-globe lang-icon" aria-hidden="true"></i>
-          </button>
-          <div class="lang-menu" data-lang-menu>
-            <button type="button" class="lang-btn" data-lang="es" aria-pressed="false">Español</button>
-            <button type="button" class="lang-btn" data-lang="ca" aria-pressed="false">Català</button>
-            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
+            <label class="visually-hidden" for="lang-select">Language</label>
+            <select
+              id="lang-select"
+              class="lang-select"
+              data-lang-select
+              aria-label="Change language"
+              data-i18n-attr="aria-label:lang.toggleAria"
+            >
+              <option value="es">Español</option>
+              <option value="ca">Català</option>
+              <option value="en">English</option>
+            </select>
           </div>
-        </div>
       </header>
 
       <main id="main-content" class="landing">
