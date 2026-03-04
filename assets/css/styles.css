@@ -1295,9 +1295,13 @@ a {
 }
 
 #visualize {
-  --graph-border: #d2d8e4;
+  --graph-border: #cfd9ea;
   --graph-ink: #0f172a;
   --graph-panel-bg: #f8fafc;
+  --graph-accent: var(--pill-blue);
+  --graph-accent-soft: #d7e5ff;
+  --graph-canvas-top: #fdfefe;
+  --graph-canvas-bottom: #edf3fb;
 }
 
 #visualize .visualize-controls {
@@ -1316,18 +1320,18 @@ a {
 
 #visualize .visualize-control-group label {
   font-size: 0.78rem;
-  color: #334155;
+  color: #1f2937;
   font-weight: 600;
 }
 
 #visualize .visualize-control-group select,
 #visualize .graph-toggle {
   border: 1px solid var(--graph-border);
-  border-radius: 8px;
+  border-radius: 999px;
   background: #ffffff;
   color: var(--graph-ink);
   font-size: 0.84rem;
-  padding: 0.42rem 0.58rem;
+  padding: 0.42rem 0.72rem;
 }
 
 #visualize .graph-toggle {
@@ -1370,8 +1374,10 @@ a {
 
 #visualize .visualize-graph-canvas {
   border: 1px solid var(--graph-border);
-  border-radius: 10px;
-  background: linear-gradient(180deg, #fdfefe 0%, #f3f6fa 100%);
+  border-radius: 12px;
+  background:
+    radial-gradient(120% 95% at 100% 0%, rgba(31, 111, 255, 0.07) 0%, rgba(31, 111, 255, 0) 55%),
+    linear-gradient(180deg, var(--graph-canvas-top) 0%, var(--graph-canvas-bottom) 100%);
   min-height: 560px;
   overflow: hidden;
   position: relative;
@@ -1382,10 +1388,10 @@ a {
   top: 0.6rem;
   right: 0.6rem;
   z-index: 3;
-  border: 1px solid #cfd7e5;
+  border: 1px solid var(--graph-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.92);
-  color: #0f172a;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--graph-ink);
   font-size: 0.78rem;
   font-weight: 700;
   line-height: 1;
@@ -1398,11 +1404,11 @@ a {
 
 #visualize .graph-fullscreen-btn:hover {
   background: #ffffff;
-  border-color: #b9c5d9;
+  border-color: var(--graph-accent);
 }
 
 #visualize .graph-fullscreen-btn:focus-visible {
-  outline: 2px solid #c7dbff;
+  outline: 2px solid var(--graph-accent-soft);
   outline-offset: 2px;
 }
 
@@ -1423,8 +1429,8 @@ a {
 
 #visualize .visualize-detail {
   border: 1px solid var(--graph-border);
-  border-radius: 10px;
-  background: var(--graph-panel-bg);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--graph-panel-bg) 100%);
   padding: 0.7rem;
   color: var(--graph-ink);
   max-height: 560px;
@@ -1453,7 +1459,7 @@ a {
 }
 
 #visualize .visualize-detail code {
-  background: #e8eef8;
+  background: #e3ecfb;
   border-radius: 4px;
   padding: 0.05rem 0.2rem;
 }

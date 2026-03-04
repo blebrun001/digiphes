@@ -490,23 +490,34 @@
   });
 
   const colorByType = {
-    object: "#1f77b4",
-    context: "#2ca02c",
-    event: "#ff7f0e",
-    observation: "#d62728",
-    digital: "#9467bd",
-    actor: "#17becf",
-    vocabulary: "#8c564b",
-    taxonomy: "#7f7f7f",
+    object: "#1f6fff",
+    context: "#3f5f82",
+    event: "#1f4e8f",
+    observation: "#145ce3",
+    digital: "#0f4cbc",
+    actor: "#2f74d6",
+    vocabulary: "#45556b",
+    taxonomy: "#556579",
     collection: "#6b7280",
-    site: "#9ca3af",
+    site: "#7d8796",
     tbox: "#111827",
-    identifier: "#1f77b4",
-    material: "#1f77b4",
-    dimension: "#1f77b4",
-    type: "#d62728",
-    technique: "#ff7f0e",
-    time: "#ff7f0e"
+    identifier: "#2b66bd",
+    material: "#2b66bd",
+    dimension: "#2b66bd",
+    type: "#145ce3",
+    technique: "#1f4e8f",
+    time: "#1f4e8f"
+  };
+
+  const linkColorByStandard = {
+    "CIDOC-CRM": "#7e8da5",
+    CRMarchaeo: "#627793",
+    CRMsci: "#4c678f",
+    RDF: "#9aa7bb",
+    RDFS: "#9aa7bb",
+    SKOS: "#7f90a8",
+    OWL: "#6f829d",
+    ABox: "#9aa7bb"
   };
 
   const legendItems = [
@@ -863,6 +874,17 @@
     return `${link.predicateLabel} (${link.standard})`;
   }
 
+  function getLinkKey(link) {
+    return `${getLinkEndpointId(link.source)}__${link.predicate}__${getLinkEndpointId(link.target)}`;
+  }
+
+  function isSameLink(linkA, linkB) {
+    if (!linkA || !linkB) {
+      return false;
+    }
+    return getLinkKey(linkA) === getLinkKey(linkB);
+  }
+
   function nodeRadius(node) {
     if (node.nodeType === "collection" || node.nodeType === "site") {
       return 4;
@@ -1026,6 +1048,21 @@
       source: getLinkEndpointId(link.source),
       target: getLinkEndpointId(link.target)
     }));
+    const visibleNodeIds = new Set(visibleNodes.map((node) => node.id));
+
+    if (state.selectedNodeId && !visibleNodeIds.has(state.selectedNodeId)) {
+      state.selectedNodeId = null;
+    }
+    if (state.selectedEdge) {
+      const selectedEdgeKey = getLinkKey(state.selectedEdge);
+      const edgeIsVisible = simulationLinks.some((link) => getLinkKey(link) === selectedEdgeKey);
+      if (!edgeIsVisible) {
+        state.selectedEdge = null;
+      }
+    }
+
+    const focusNeighborhood = state.focusNodeId ? getNeighborhood(state.focusNodeId, getSelectedLinkDepth(), { includeGlobal: false }) : null;
+    const selectedEdge = state.selectedEdge;
 
     if (simulation) {
       simulation.stop();
@@ -1033,20 +1070,38 @@
 
     const linkSelection = linkGroup
       .selectAll("line")
-      .data(simulationLinks, (d) => `${getLinkEndpointId(d.source)}__${d.predicate}__${getLinkEndpointId(d.target)}`)
+      .data(simulationLinks, (d) => getLinkKey(d))
       .join((enter) =>
         enter
           .append("line")
-          .attr("stroke", "#9ca3af")
-          .attr("stroke-width", 1.2)
-          .attr("stroke-opacity", 0.75)
+          .attr("stroke-linecap", "round")
           .on("click", (event, d) => {
             event.stopPropagation();
             state.selectedEdge = d;
             state.selectedNodeId = null;
             updateDetailWithEdge(d);
+            renderGraph();
           })
       );
+    linkSelection
+      .attr("stroke", (d) => {
+        if (selectedEdge && isSameLink(d, selectedEdge)) {
+          return "#0f4cbc";
+        }
+        return linkColorByStandard[d.standard] || "#9aa7bb";
+      })
+      .attr("stroke-width", (d) => (selectedEdge && isSameLink(d, selectedEdge) ? 2.4 : 1.2))
+      .attr("stroke-opacity", (d) => {
+        if (selectedEdge) {
+          return isSameLink(d, selectedEdge) ? 0.96 : 0.24;
+        }
+        if (focusNeighborhood && state.focusNodeId) {
+          const sourceId = getLinkEndpointId(d.source);
+          const targetId = getLinkEndpointId(d.target);
+          return focusNeighborhood.has(sourceId) && focusNeighborhood.has(targetId) ? 0.74 : 0.2;
+        }
+        return 0.58;
+      });
 
     linkSelection.selectAll("title").remove();
     linkSelection.append("title").text((d) => edgeDisplayLabel(d));
@@ -1058,9 +1113,6 @@
         enter
           .append("circle")
           .attr("r", (d) => nodeRadius(d))
-          .attr("fill", (d) => colorByType[d.nodeType] || "#1f2937")
-          .attr("stroke", "#0b1220")
-          .attr("stroke-width", 0.6)
           .style("cursor", "pointer")
           .on("click", (event, d) => {
             event.stopPropagation();
@@ -1072,6 +1124,21 @@
             updateDetailWithNode(d);
           })
       );
+    nodeSelection
+      .attr("fill", (d) => colorByType[d.nodeType] || "#1f2937")
+      .attr("stroke", "none")
+      .attr("stroke-width", 0)
+      .attr("opacity", (d) => {
+        if (focusNeighborhood && state.focusNodeId) {
+          return focusNeighborhood.has(d.id) ? 1 : 0.34;
+        }
+        if (selectedEdge) {
+          const sourceId = getLinkEndpointId(selectedEdge.source);
+          const targetId = getLinkEndpointId(selectedEdge.target);
+          return d.id === sourceId || d.id === targetId ? 1 : 0.34;
+        }
+        return 1;
+      });
 
     nodeSelection.selectAll("title").remove();
     nodeSelection.append("title").text((d) => `${d.label}\n${d.crmClass || ""}`);
@@ -1083,10 +1150,17 @@
         (d) => d.id
       )
       .join("text")
-      .attr("font-size", 10)
-      .attr("fill", "#111827")
+      .attr("font-family", "\"Manrope\", \"Avenir Next\", \"Segoe UI\", sans-serif")
+      .attr("font-size", 10.5)
+      .attr("font-weight", 600)
+      .attr("fill", "#0f172a")
+      .attr("stroke", "rgba(255, 255, 255, 0.92)")
+      .attr("stroke-width", 2)
+      .attr("paint-order", "stroke")
       .attr("text-anchor", "middle")
       .attr("dy", (d) => -(nodeRadius(d) + 4))
+      .style("pointer-events", "none")
+      .attr("opacity", (d) => (focusNeighborhood && state.focusNodeId && !focusNeighborhood.has(d.id) ? 0.25 : 0.95))
       .text((d) => d.label);
 
     simulation = d3Ref
