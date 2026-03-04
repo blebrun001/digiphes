@@ -464,6 +464,7 @@
     actor: "all",
     showCollections: true,
     showSites: true,
+    focusNodeId: null,
     selectedNodeId: null,
     selectedEdge: null
   };
@@ -497,16 +498,17 @@
   const nodeGroup = graphGroup.append("g").attr("class", "graph-nodes");
   const labelGroup = graphGroup.append("g").attr("class", "graph-labels");
 
-  svg.call(
-    d3Ref
-      .zoom()
-      .scaleExtent([0.35, 3])
-      .on("zoom", (event) => {
-        graphGroup.attr("transform", event.transform);
-      })
-  );
+  const zoomBehavior = d3Ref
+    .zoom()
+    .scaleExtent([0.35, 3])
+    .on("zoom", (event) => {
+      graphGroup.attr("transform", event.transform);
+    });
+
+  svg.call(zoomBehavior);
 
   let simulation = null;
+  let pendingCenterNodeId = null;
 
   function nodeAllowedByDomain(node) {
     if (state.domain === "all") {
@@ -585,6 +587,21 @@
       const targetId = getLinkEndpointId(link.target);
       return visibleNodeIds.has(sourceId) && visibleNodeIds.has(targetId);
     });
+
+    if (state.focusNodeId && visibleNodeIds.has(state.focusNodeId)) {
+      const focusLinkSubset = visibleLinks.filter((link) => {
+        const sourceId = getLinkEndpointId(link.source);
+        const targetId = getLinkEndpointId(link.target);
+        return sourceId === state.focusNodeId || targetId === state.focusNodeId;
+      });
+      const focusedNodeIds = new Set([state.focusNodeId]);
+      focusLinkSubset.forEach((link) => {
+        focusedNodeIds.add(getLinkEndpointId(link.source));
+        focusedNodeIds.add(getLinkEndpointId(link.target));
+      });
+      const focusNodeSubset = visibleNodes.filter((node) => focusedNodeIds.has(node.id));
+      return { visibleNodes: focusNodeSubset, visibleLinks: focusLinkSubset };
+    }
 
     return { visibleNodes, visibleLinks };
   }
@@ -733,8 +750,11 @@
           .style("cursor", "pointer")
           .on("click", (event, d) => {
             event.stopPropagation();
+            state.focusNodeId = d.id;
             state.selectedNodeId = d.id;
             state.selectedEdge = null;
+            pendingCenterNodeId = d.id;
+            renderGraph();
             updateDetailWithNode(d);
           })
       );
@@ -786,11 +806,33 @@
       nodeSelection.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
 
       labelSelection.attr("x", (d) => d.x).attr("y", (d) => d.y);
+
+      if (pendingCenterNodeId) {
+        const focusedNode = visibleNodes.find((node) => node.id === pendingCenterNodeId);
+        if (focusedNode && Number.isFinite(focusedNode.x) && Number.isFinite(focusedNode.y)) {
+          const currentTransform = d3Ref.zoomTransform(svgElement);
+          const k = currentTransform.k || 1;
+          const tx = width / 2 - focusedNode.x * k;
+          const ty = height / 2 - focusedNode.y * k;
+          svg
+            .transition()
+            .duration(350)
+            .call(zoomBehavior.transform, d3Ref.zoomIdentity.translate(tx, ty).scale(k));
+          pendingCenterNodeId = null;
+        }
+      }
     });
 
     svg.on("click", () => {
+      const wasFocused = Boolean(state.focusNodeId);
+      state.focusNodeId = null;
       state.selectedNodeId = null;
       state.selectedEdge = null;
+      if (wasFocused) {
+        pendingCenterNodeId = null;
+        svg.transition().duration(250).call(zoomBehavior.transform, d3Ref.zoomIdentity);
+        renderGraph();
+      }
       detailPanel.innerHTML = "<h3>Details</h3><p>Select a node or an edge to inspect CIDOC-CRM links, extensions, and controlled vocabularies.</p>";
     });
   }
