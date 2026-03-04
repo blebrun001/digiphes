@@ -321,6 +321,67 @@
     ["obj-pal-001", "site-cova-gran"]
   ];
 
+  const autoClassTyping = [];
+  const representedCollectionIds = new Set(objectToCollection.map(([, collectionId]) => collectionId));
+  const fallbackMockSites = ["Abauntz", "Abric de la Consagració", "Camp dels Ninots", "Cova de Lazaret", "El Molí del Salt"];
+
+  collections
+    .map((name) => ({ name, collectionId: `collection-${slugify(name)}` }))
+    .filter(({ collectionId }) => !representedCollectionIds.has(collectionId))
+    .forEach(({ name, collectionId }, index) => {
+      const idx = String(index + 1).padStart(3, "0");
+      const objectId = `obj-mock-${idx}`;
+      const identifierId = `id-mock-${idx}`;
+      const activityId = `act-mock-${idx}`;
+      const reportId = `doc-mock-${idx}`;
+      const actorId = actors[index % actors.length][0];
+      const siteId = `site-${slugify(fallbackMockSites[index % fallbackMockSites.length])}`;
+      const collectionCode = name.replace(/\s*\(.+?\)\s*/g, "").replace(/[^A-Za-z]/g, "").toUpperCase().slice(0, 4) || "COLL";
+
+      addNode({
+        id: objectId,
+        label: `OBJ-${collectionCode}-${idx} Placeholder item`,
+        nodeType: "object",
+        domain: sharedDomain,
+        crmClass: "E24",
+        uri: `https://data.iphes.example/id/mock/${objectId}`
+      });
+      addNode({
+        id: identifierId,
+        label: `MOCK-${collectionCode}-${idx}`,
+        nodeType: "identifier",
+        domain: sharedDomain,
+        crmClass: "E42",
+        uri: `https://data.iphes.example/id/identifier/mock-${idx}`
+      });
+      addNode({
+        id: activityId,
+        label: `Documentation activity (${name})`,
+        nodeType: "event",
+        domain: sharedDomain,
+        crmClass: "E7",
+        uri: `https://data.iphes.example/id/activity/mock-${idx}`
+      });
+      addNode({
+        id: reportId,
+        label: `Collection note ${idx}`,
+        nodeType: "digital",
+        domain: sharedDomain,
+        crmClass: "E31",
+        uri: `https://data.iphes.example/id/document/mock-${idx}`
+      });
+
+      objectToCollection.push([objectId, collectionId]);
+      objectToSite.push([objectId, siteId]);
+
+      addLink({ source: objectId, target: identifierId, predicate: "P48_has_preferred_identifier", predicateLabel: "P48 has preferred identifier", standard: "CIDOC-CRM" });
+      addLink({ source: activityId, target: objectId, predicate: "P16_used_specific_object", predicateLabel: "P16 used specific object", standard: "CIDOC-CRM" });
+      addLink({ source: activityId, target: reportId, predicate: "P94_has_created", predicateLabel: "P94 has created", standard: "CIDOC-CRM" });
+      addLink({ source: activityId, target: actorId, predicate: "P14_carried_out_by", predicateLabel: "P14 carried out by", standard: "CIDOC-CRM" });
+
+      autoClassTyping.push([objectId, "class-e24"], [identifierId, "class-e42"], [activityId, "class-e7"], [reportId, "class-e31"]);
+    });
+
   objectToCollection.forEach(([objId, collectionId]) => {
     addLink({
       source: collectionId,
@@ -407,6 +468,8 @@
     ["sample-pal-001", "class-s4"],
     ["e31-pal-slide", "class-e31"]
   ];
+
+  classTyping.push(...autoClassTyping);
 
   classTyping.forEach(([instanceId, classId]) => {
     addLink({ source: instanceId, target: classId, predicate: "rdf:type", predicateLabel: "instance of", standard: "RDF" });
