@@ -128,6 +128,16 @@
     });
   }
 
+  function getLinkEndpointId(endpoint) {
+    if (typeof endpoint === "string") {
+      return endpoint;
+    }
+    if (endpoint && typeof endpoint === "object" && "id" in endpoint) {
+      return endpoint.id;
+    }
+    return String(endpoint ?? "");
+  }
+
   addNode({
     id: "master-collection",
     label: "IPHES-CERCA holdings",
@@ -570,7 +580,11 @@
     );
     const visibleNodeIds = new Set(visibleNodes.map((node) => node.id));
 
-    const visibleLinks = links.filter((link) => visibleNodeIds.has(link.source) && visibleNodeIds.has(link.target));
+    const visibleLinks = links.filter((link) => {
+      const sourceId = getLinkEndpointId(link.source);
+      const targetId = getLinkEndpointId(link.target);
+      return visibleNodeIds.has(sourceId) && visibleNodeIds.has(targetId);
+    });
 
     return { visibleNodes, visibleLinks };
   }
@@ -590,22 +604,24 @@
   }
 
   function updateDetailWithNode(node) {
-    const outgoing = links.filter((link) => link.source === node.id);
-    const incoming = links.filter((link) => link.target === node.id);
+    const outgoing = links.filter((link) => getLinkEndpointId(link.source) === node.id);
+    const incoming = links.filter((link) => getLinkEndpointId(link.target) === node.id);
 
     const outgoingHtml = outgoing
       .slice(0, 16)
       .map((link) => {
-        const target = nodeById.get(link.target);
-        return `<li><code>${link.predicate}</code> -> ${target ? target.label : link.target}</li>`;
+        const targetId = getLinkEndpointId(link.target);
+        const target = nodeById.get(targetId);
+        return `<li><code>${link.predicate}</code> -> ${target ? target.label : targetId}</li>`;
       })
       .join("");
 
     const incomingHtml = incoming
       .slice(0, 16)
       .map((link) => {
-        const source = nodeById.get(link.source);
-        return `<li>${source ? source.label : link.source} -> <code>${link.predicate}</code></li>`;
+        const sourceId = getLinkEndpointId(link.source);
+        const source = nodeById.get(sourceId);
+        return `<li>${source ? source.label : sourceId} -> <code>${link.predicate}</code></li>`;
       })
       .join("");
 
@@ -624,12 +640,14 @@
   }
 
   function updateDetailWithEdge(link) {
-    const source = nodeById.get(link.source);
-    const target = nodeById.get(link.target);
+    const sourceId = getLinkEndpointId(link.source);
+    const targetId = getLinkEndpointId(link.target);
+    const source = nodeById.get(sourceId);
+    const target = nodeById.get(targetId);
 
     detailPanel.innerHTML = `
       <h3>Edge</h3>
-      <p><strong>${source ? source.label : link.source}</strong> -> <strong>${target ? target.label : link.target}</strong></p>
+      <p><strong>${source ? source.label : sourceId}</strong> -> <strong>${target ? target.label : targetId}</strong></p>
       <p><strong>Predicate:</strong> <code>${link.predicate}</code></p>
       <p><strong>Label:</strong> ${link.predicateLabel}</p>
       <p><strong>Standard:</strong> ${link.standard}</p>
@@ -672,6 +690,11 @@
   function renderGraph() {
     const { width, height } = resizeSvg();
     const { visibleNodes, visibleLinks } = getVisibleGraph();
+    const simulationLinks = visibleLinks.map((link) => ({
+      ...link,
+      source: getLinkEndpointId(link.source),
+      target: getLinkEndpointId(link.target)
+    }));
 
     if (simulation) {
       simulation.stop();
@@ -679,7 +702,7 @@
 
     const linkSelection = linkGroup
       .selectAll("line")
-      .data(visibleLinks, (d) => `${d.source}__${d.predicate}__${d.target}`)
+      .data(simulationLinks, (d) => `${getLinkEndpointId(d.source)}__${d.predicate}__${getLinkEndpointId(d.target)}`)
       .join((enter) =>
         enter
           .append("line")
@@ -737,7 +760,7 @@
       .force(
         "link",
         d3Ref
-          .forceLink(visibleLinks)
+          .forceLink(simulationLinks)
           .id((d) => d.id)
           .distance((d) => {
             if (d.predicate === "P89_falls_within" || d.predicate === "P46_is_composed_of") {
