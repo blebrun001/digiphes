@@ -533,6 +533,7 @@
     collection: "all",
     site: "all",
     relation: "all",
+    linkLevel: "2",
     showCollections: true,
     showSites: true,
     focusNodeId: null,
@@ -546,7 +547,8 @@
     actor: root.querySelector("#graph-actor-filter"),
     collection: root.querySelector("#graph-collection-filter"),
     site: root.querySelector("#graph-site-filter"),
-    relation: root.querySelector("#graph-relation-filter")
+    relation: root.querySelector("#graph-relation-filter"),
+    linkLevel: root.querySelector("#graph-link-level-filter")
   };
 
   function setSelectOptions(selectElement, options, allLabel) {
@@ -698,7 +700,8 @@
     return node.layer === state.layer;
   }
 
-  function getNeighborhood(seedId, depth = 2) {
+  function getNeighborhood(seedId, depth = 2, options = {}) {
+    const includeGlobal = options.includeGlobal !== false;
     const included = new Set([seedId]);
     let frontier = new Set([seedId]);
 
@@ -722,13 +725,33 @@
       }
     }
 
-    nodes.forEach((node) => {
-      if (node.domain === sharedDomain || node.nodeType === "taxonomy" || node.nodeType === "tbox" || node.nodeType === "vocabulary") {
-        included.add(node.id);
-      }
-    });
+    if (includeGlobal) {
+      nodes.forEach((node) => {
+        if (node.domain === sharedDomain || node.nodeType === "taxonomy" || node.nodeType === "tbox" || node.nodeType === "vocabulary") {
+          included.add(node.id);
+        }
+      });
+    }
 
     return included;
+  }
+
+  function getSelectedLinkDepth() {
+    const parsed = Number.parseInt(String(state.linkLevel), 10);
+    if (Number.isFinite(parsed) && parsed >= 1) {
+      return parsed;
+    }
+    return 2;
+  }
+
+  function unionNodeSets(sets) {
+    const union = new Set();
+    sets.forEach((set) => {
+      set.forEach((value) => {
+        union.add(value);
+      });
+    });
+    return union;
   }
 
   function intersectNodeSets(sets) {
@@ -765,17 +788,25 @@
   }
 
   function getVisibleGraph() {
+    const linkDepth = getSelectedLinkDepth();
     const selectionSets = [];
     if (state.actor !== "all") {
-      selectionSets.push(getNeighborhood(state.actor, 2));
+      selectionSets.push(getNeighborhood(state.actor, linkDepth, { includeGlobal: false }));
     }
     if (state.collection !== "all") {
-      selectionSets.push(getNeighborhood(state.collection, 2));
+      selectionSets.push(getNeighborhood(state.collection, linkDepth, { includeGlobal: false }));
     }
     if (state.site !== "all") {
-      selectionSets.push(getNeighborhood(state.site, 2));
+      selectionSets.push(getNeighborhood(state.site, linkDepth, { includeGlobal: false }));
     }
-    const selectedNodeSet = intersectNodeSets(selectionSets);
+    let selectedNodeSet = intersectNodeSets(selectionSets);
+
+    if (!selectedNodeSet && !state.focusNodeId) {
+      const defaultSeeds = ["master-collection", "study-area"].filter((id) => nodeById.has(id));
+      if (defaultSeeds.length) {
+        selectedNodeSet = unionNodeSets(defaultSeeds.map((seedId) => getNeighborhood(seedId, linkDepth, { includeGlobal: false })));
+      }
+    }
 
     let visibleNodes = nodes.filter(
       (node) => nodeAllowedByDomain(node) && nodeAllowedByLayer(node) && nodeAllowedBySelection(node, selectedNodeSet) && nodeAllowedByCollapse(node)
@@ -814,17 +845,14 @@
     }
 
     if (state.focusNodeId && visibleNodeIds.has(state.focusNodeId)) {
+      const focusedNeighborhood = getNeighborhood(state.focusNodeId, linkDepth, { includeGlobal: false });
+      const focusNodeSubset = visibleNodes.filter((node) => focusedNeighborhood.has(node.id));
+      const focusNodeIds = new Set(focusNodeSubset.map((node) => node.id));
       const focusLinkSubset = visibleLinks.filter((link) => {
         const sourceId = getLinkEndpointId(link.source);
         const targetId = getLinkEndpointId(link.target);
-        return sourceId === state.focusNodeId || targetId === state.focusNodeId;
+        return focusNodeIds.has(sourceId) && focusNodeIds.has(targetId);
       });
-      const focusedNodeIds = new Set([state.focusNodeId]);
-      focusLinkSubset.forEach((link) => {
-        focusedNodeIds.add(getLinkEndpointId(link.source));
-        focusedNodeIds.add(getLinkEndpointId(link.target));
-      });
-      const focusNodeSubset = visibleNodes.filter((node) => focusedNodeIds.has(node.id));
       return { visibleNodes: focusNodeSubset, visibleLinks: focusLinkSubset };
     }
 

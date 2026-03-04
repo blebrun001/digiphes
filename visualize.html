@@ -58,6 +58,17 @@
 
         <section id="visualize" class="panel" data-visualize-graph>
           <h2 data-i18n="visualizePage.title">Visualize</h2>
+          <div class="visualize-controls">
+            <div class="visualize-control-group">
+              <label for="graph-link-level-filter">Link level</label>
+              <select id="graph-link-level-filter" data-graph-filter="linkLevel">
+                <option value="1">Level 1</option>
+                <option value="2" selected>Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+              </select>
+            </div>
+          </div>
           <div class="visualize-graph-layout">
             <div class="visualize-graph-canvas">
               <button
