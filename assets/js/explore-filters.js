@@ -282,11 +282,20 @@
     }
   });
 
+  let normalizeCardsRaf = 0;
+
   window.addEventListener("resize", () => {
     const openGroup = groups.find((group) => group.classList.contains("is-open"));
     if (openGroup) {
       positionPanelWithinViewport(openGroup);
     }
+
+    if (normalizeCardsRaf) {
+      window.cancelAnimationFrame(normalizeCardsRaf);
+    }
+    normalizeCardsRaf = window.requestAnimationFrame(() => {
+      normalizeResultCardHeights(resultsSection);
+    });
   });
 
   function closeAllGroups() {
@@ -505,6 +514,33 @@
       .join("")}</div>`;
 
     hydrateResultImages(listRoot);
+    window.requestAnimationFrame(() => normalizeResultCardHeights(listRoot));
+  }
+
+  function normalizeResultCardHeights(root) {
+    if (!(root instanceof HTMLElement)) {
+      return;
+    }
+
+    const cards = root.querySelectorAll(".research-result-item");
+    if (!cards.length) {
+      return;
+    }
+
+    let maxHeight = 0;
+    cards.forEach((card) => {
+      if (!(card instanceof HTMLElement)) {
+        return;
+      }
+      card.style.minHeight = "0";
+      maxHeight = Math.max(maxHeight, card.offsetHeight);
+    });
+
+    cards.forEach((card) => {
+      if (card instanceof HTMLElement) {
+        card.style.minHeight = `${maxHeight}px`;
+      }
+    });
   }
 
   function hydrateResultImages(root) {
