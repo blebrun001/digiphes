@@ -1374,6 +1374,45 @@ a {
   background: linear-gradient(180deg, #fdfefe 0%, #f3f6fa 100%);
   min-height: 560px;
   overflow: hidden;
+  position: relative;
+}
+
+#visualize .graph-fullscreen-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 3;
+  border: 1px solid #cfd7e5;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.42rem 0.62rem;
+  cursor: pointer;
+}
+
+#visualize .graph-fullscreen-btn:hover {
+  background: #ffffff;
+  border-color: #b9c5d9;
+}
+
+#visualize .graph-fullscreen-btn:focus-visible {
+  outline: 2px solid #c7dbff;
+  outline-offset: 2px;
+}
+
+#visualize .visualize-graph-canvas:fullscreen,
+#visualize .visualize-graph-canvas:-webkit-full-screen {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  border-radius: 0;
+  border: 0;
 }
 
 #visualize [data-graph-svg] {

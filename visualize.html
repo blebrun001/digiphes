@@ -58,46 +58,19 @@
 
         <section id="visualize" class="panel" data-visualize-graph>
           <h2 data-i18n="visualizePage.title">Visualize</h2>
-          <p class="section-intro" data-i18n="visualizePage.body">
-            This new page will host visual exploration tools for digitized collections.
-          </p>
-
-          <div class="visualize-controls" aria-label="Graph controls">
-            <div class="visualize-control-group">
-              <label for="graph-domain-filter">Domain</label>
-              <select id="graph-domain-filter" data-graph-filter="domain">
-                <option value="all">All domains</option>
-                <option value="lithic">Lithic</option>
-                <option value="osteology">Osteology</option>
-                <option value="palynology">Palynology</option>
-              </select>
-            </div>
-            <div class="visualize-control-group">
-              <label for="graph-layer-filter">Layer</label>
-              <select id="graph-layer-filter" data-graph-filter="layer">
-                <option value="all">All layers</option>
-                <option value="ABox">ABox</option>
-                <option value="TBox">TBox</option>
-                <option value="Vocabulary">Vocabulary</option>
-              </select>
-            </div>
-            <div class="visualize-control-group">
-              <label for="graph-actor-filter">Actor</label>
-              <select id="graph-actor-filter" data-graph-filter="actor">
-                <option value="all">All actors</option>
-                <option value="actor-ana-ruiz">Ana Ruiz</option>
-                <option value="actor-marc-vidal">Marc Vidal</option>
-                <option value="actor-lea-ben-salah">Lea Ben Salah</option>
-              </select>
-            </div>
-            <button type="button" class="graph-toggle" data-graph-toggle="collections">Collapse Collections</button>
-            <button type="button" class="graph-toggle" data-graph-toggle="sites">Collapse Sites</button>
-          </div>
-
-          <div class="visualize-legend" data-graph-legend aria-label="Graph legend"></div>
-
           <div class="visualize-graph-layout">
             <div class="visualize-graph-canvas">
+              <button
+                type="button"
+                class="graph-fullscreen-btn"
+                data-graph-fullscreen
+                aria-label="Enter fullscreen"
+                title="Enter fullscreen"
+                data-i18n-attr="aria-label:visualizePage.fullscreen.enter;title:visualizePage.fullscreen.enter"
+              >
+                <i class="fa-solid fa-expand" aria-hidden="true"></i>
+                <span data-graph-fullscreen-label data-i18n="visualizePage.fullscreen.enter">Enter fullscreen</span>
+              </button>
               <svg data-graph-svg role="img" aria-label="Fictional RDF network graph"></svg>
             </div>
             <aside class="visualize-detail" data-graph-detail>

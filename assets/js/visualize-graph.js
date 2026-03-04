@@ -8,8 +8,11 @@
   const svgElement = root.querySelector("[data-graph-svg]");
   const detailPanel = root.querySelector("[data-graph-detail]");
   const legendRoot = root.querySelector("[data-graph-legend]");
+  const graphCanvas = root.querySelector(".visualize-graph-canvas");
+  const fullscreenButton = root.querySelector("[data-graph-fullscreen]");
+  const fullscreenLabel = root.querySelector("[data-graph-fullscreen-label]");
 
-  if (!d3Ref || !(svgElement instanceof SVGElement) || !(detailPanel instanceof HTMLElement) || !(legendRoot instanceof HTMLElement)) {
+  if (!d3Ref || !(svgElement instanceof SVGElement) || !(detailPanel instanceof HTMLElement)) {
     if (detailPanel instanceof HTMLElement) {
       detailPanel.innerHTML = "<h3>Details</h3><p>Graph rendering is unavailable because D3 could not be loaded.</p>";
     }
@@ -517,20 +520,128 @@
     ["taxonomy", "Taxonomy"]
   ];
 
-  legendRoot.innerHTML = legendItems
-    .map(([key, label]) => `<span class="legend-item"><span class="legend-swatch" style="background:${colorByType[key]}"></span>${label}</span>`)
-    .join("");
+  if (legendRoot instanceof HTMLElement) {
+    legendRoot.innerHTML = legendItems
+      .map(([key, label]) => `<span class="legend-item"><span class="legend-swatch" style="background:${colorByType[key]}"></span>${label}</span>`)
+      .join("");
+  }
 
   const state = {
     domain: "all",
     layer: "all",
     actor: "all",
+    collection: "all",
+    site: "all",
+    relation: "all",
     showCollections: true,
     showSites: true,
     focusNodeId: null,
     selectedNodeId: null,
     selectedEdge: null
   };
+
+  const filterControls = {
+    domain: root.querySelector("#graph-domain-filter"),
+    layer: root.querySelector("#graph-layer-filter"),
+    actor: root.querySelector("#graph-actor-filter"),
+    collection: root.querySelector("#graph-collection-filter"),
+    site: root.querySelector("#graph-site-filter"),
+    relation: root.querySelector("#graph-relation-filter")
+  };
+
+  function setSelectOptions(selectElement, options, allLabel) {
+    if (!(selectElement instanceof HTMLSelectElement)) {
+      return;
+    }
+    const previousValue = selectElement.value || "all";
+    const validValues = new Set(["all", ...options.map((option) => option.value)]);
+    const nextValue = validValues.has(previousValue) ? previousValue : "all";
+
+    selectElement.innerHTML = "";
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = allLabel;
+    selectElement.append(allOption);
+
+    options.forEach((option) => {
+      const entry = document.createElement("option");
+      entry.value = option.value;
+      entry.textContent = option.label;
+      selectElement.append(entry);
+    });
+
+    selectElement.value = nextValue;
+  }
+
+  function formatDomainLabel(domain) {
+    if (domain === sharedDomain) {
+      return "Cross-collection";
+    }
+    return domain
+      .split("-")
+      .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(" ");
+  }
+
+  function uniqueSorted(values) {
+    return [...new Set(values)].sort((a, b) => a.localeCompare(b));
+  }
+
+  function populateFilterOptions() {
+    const domainOptions = uniqueSorted(nodes.map((node) => node.domain)).map((domain) => ({
+      value: domain,
+      label: formatDomainLabel(domain)
+    }));
+
+    const layerOptions = uniqueSorted(nodes.map((node) => node.layer)).map((layer) => ({
+      value: layer,
+      label: layer
+    }));
+
+    const actorOptions = nodes
+      .filter((node) => node.nodeType === "actor")
+      .map((node) => ({ value: node.id, label: node.label }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
+    const collectionOptions = nodes
+      .filter((node) => node.nodeType === "collection")
+      .map((node) => ({ value: node.id, label: node.label }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
+    const siteOptions = nodes
+      .filter((node) => node.nodeType === "site" || (node.nodeType === "event" && node.crmClass === "A9"))
+      .map((node) => ({
+        value: node.id,
+        label: node.nodeType === "site" ? `Site: ${node.label}` : `Campaign: ${node.label}`
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label));
+
+    const relationOptionByPredicate = new Map();
+    links.forEach((link) => {
+      if (!relationOptionByPredicate.has(link.predicate)) {
+        relationOptionByPredicate.set(link.predicate, {
+          value: link.predicate,
+          label: `${link.predicateLabel} (${link.predicate})`
+        });
+      }
+    });
+    const relationOptions = [...relationOptionByPredicate.values()].sort((a, b) => a.label.localeCompare(b.label));
+
+    setSelectOptions(filterControls.domain, domainOptions, "All domains");
+    setSelectOptions(filterControls.layer, layerOptions, "All layers");
+    setSelectOptions(filterControls.actor, actorOptions, "All actors");
+    setSelectOptions(filterControls.collection, collectionOptions, "All collections");
+    setSelectOptions(filterControls.site, siteOptions, "All sites and campaigns");
+    setSelectOptions(filterControls.relation, relationOptions, "All relation types");
+
+    Object.entries(filterControls).forEach(([filterName, control]) => {
+      if (control instanceof HTMLSelectElement) {
+        state[filterName] = control.value;
+      }
+    });
+  }
+
+  populateFilterOptions();
 
   root.querySelectorAll("[data-graph-filter]").forEach((control) => {
     control.addEventListener("change", () => {
@@ -587,9 +698,9 @@
     return node.layer === state.layer;
   }
 
-  function getActorNeighborhood(actorId, depth = 2) {
-    const included = new Set([actorId]);
-    let frontier = new Set([actorId]);
+  function getNeighborhood(seedId, depth = 2) {
+    const included = new Set([seedId]);
+    let frontier = new Set([seedId]);
 
     for (let step = 0; step < depth; step += 1) {
       const nextFrontier = new Set();
@@ -620,11 +731,27 @@
     return included;
   }
 
-  function nodeAllowedByActor(node, actorSet) {
-    if (!actorSet) {
+  function intersectNodeSets(sets) {
+    if (!sets.length) {
+      return null;
+    }
+    const [firstSet, ...rest] = sets;
+    const intersection = new Set(firstSet);
+    rest.forEach((set) => {
+      [...intersection].forEach((value) => {
+        if (!set.has(value)) {
+          intersection.delete(value);
+        }
+      });
+    });
+    return intersection;
+  }
+
+  function nodeAllowedBySelection(node, allowedSet) {
+    if (!allowedSet) {
       return true;
     }
-    return actorSet.has(node.id);
+    return allowedSet.has(node.id);
   }
 
   function nodeAllowedByCollapse(node) {
@@ -638,18 +765,53 @@
   }
 
   function getVisibleGraph() {
-    const actorSet = state.actor === "all" ? null : getActorNeighborhood(state.actor);
+    const selectionSets = [];
+    if (state.actor !== "all") {
+      selectionSets.push(getNeighborhood(state.actor, 2));
+    }
+    if (state.collection !== "all") {
+      selectionSets.push(getNeighborhood(state.collection, 2));
+    }
+    if (state.site !== "all") {
+      selectionSets.push(getNeighborhood(state.site, 2));
+    }
+    const selectedNodeSet = intersectNodeSets(selectionSets);
 
-    const visibleNodes = nodes.filter(
-      (node) => nodeAllowedByDomain(node) && nodeAllowedByLayer(node) && nodeAllowedByActor(node, actorSet) && nodeAllowedByCollapse(node)
+    let visibleNodes = nodes.filter(
+      (node) => nodeAllowedByDomain(node) && nodeAllowedByLayer(node) && nodeAllowedBySelection(node, selectedNodeSet) && nodeAllowedByCollapse(node)
     );
-    const visibleNodeIds = new Set(visibleNodes.map((node) => node.id));
+    let visibleNodeIds = new Set(visibleNodes.map((node) => node.id));
 
-    const visibleLinks = links.filter((link) => {
+    let visibleLinks = links.filter((link) => {
       const sourceId = getLinkEndpointId(link.source);
       const targetId = getLinkEndpointId(link.target);
       return visibleNodeIds.has(sourceId) && visibleNodeIds.has(targetId);
     });
+
+    if (state.relation !== "all") {
+      visibleLinks = visibleLinks.filter((link) => link.predicate === state.relation);
+      const relationNodeIds = new Set();
+      visibleLinks.forEach((link) => {
+        relationNodeIds.add(getLinkEndpointId(link.source));
+        relationNodeIds.add(getLinkEndpointId(link.target));
+      });
+      if (state.actor !== "all") {
+        relationNodeIds.add(state.actor);
+      }
+      if (state.collection !== "all") {
+        relationNodeIds.add(state.collection);
+      }
+      if (state.site !== "all") {
+        relationNodeIds.add(state.site);
+      }
+      visibleNodes = visibleNodes.filter((node) => relationNodeIds.has(node.id));
+      visibleNodeIds = new Set(visibleNodes.map((node) => node.id));
+      visibleLinks = visibleLinks.filter((link) => {
+        const sourceId = getLinkEndpointId(link.source);
+        const targetId = getLinkEndpointId(link.target);
+        return visibleNodeIds.has(sourceId) && visibleNodeIds.has(targetId);
+      });
+    }
 
     if (state.focusNodeId && visibleNodeIds.has(state.focusNodeId)) {
       const focusLinkSubset = visibleLinks.filter((link) => {
@@ -712,6 +874,9 @@
       <p><strong>CRM class:</strong> ${node.crmClass || "n/a"}</p>
       <p><strong>Layer:</strong> ${node.layer} | <strong>Domain:</strong> ${node.domain}</p>
       <p><strong>Type:</strong> ${node.nodeType}</p>
+      <p>
+        <a class="cta" href="${node.uri}" target="_blank" rel="noopener noreferrer">Access ressource</a>
+      </p>
       <h4>Outgoing links</h4>
       <ul>${outgoingHtml || "<li>None</li>"}</ul>
       <h4>Incoming links</h4>
@@ -740,6 +905,64 @@
     const height = Math.max(560, Math.floor(bounds.height));
     svg.attr("viewBox", `0 0 ${width} ${height}`);
     return { width, height };
+  }
+
+  function getFullscreenElement() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
+  function tUi(key, fallback) {
+    if (window.I18n && typeof window.I18n.t === "function") {
+      return window.I18n.t(key);
+    }
+    return fallback;
+  }
+
+  function isCanvasFullscreen() {
+    if (!(graphCanvas instanceof HTMLElement)) {
+      return false;
+    }
+    return getFullscreenElement() === graphCanvas;
+  }
+
+  function updateFullscreenButton() {
+    if (!(fullscreenButton instanceof HTMLButtonElement)) {
+      return;
+    }
+    const active = isCanvasFullscreen();
+    const text = active
+      ? tUi("visualizePage.fullscreen.exit", "Exit fullscreen")
+      : tUi("visualizePage.fullscreen.enter", "Enter fullscreen");
+    fullscreenButton.setAttribute("aria-label", text);
+    fullscreenButton.setAttribute("title", text);
+    if (fullscreenLabel instanceof HTMLElement) {
+      fullscreenLabel.textContent = text;
+    }
+    if (graphCanvas instanceof HTMLElement) {
+      graphCanvas.toggleAttribute("data-fullscreen-active", active);
+    }
+  }
+
+  async function toggleFullscreen() {
+    if (!(graphCanvas instanceof HTMLElement)) {
+      return;
+    }
+    const active = isCanvasFullscreen();
+    try {
+      if (active) {
+        if (document.exitFullscreen) {
+          await document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+      } else if (graphCanvas.requestFullscreen) {
+        await graphCanvas.requestFullscreen();
+      } else if (graphCanvas.webkitRequestFullscreen) {
+        graphCanvas.webkitRequestFullscreen();
+      }
+    } catch (_) {
+      updateFullscreenButton();
+    }
   }
 
   function drag(sim) {
@@ -901,6 +1124,21 @@
   }
 
   renderGraph();
+
+  if (fullscreenButton instanceof HTMLButtonElement) {
+    fullscreenButton.addEventListener("click", () => {
+      toggleFullscreen();
+    });
+    updateFullscreenButton();
+  }
+
+  const onFullscreenChange = () => {
+    updateFullscreenButton();
+    renderGraph();
+  };
+  document.addEventListener("fullscreenchange", onFullscreenChange);
+  document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+  document.addEventListener("language:changed", updateFullscreenButton);
 
   window.addEventListener("resize", () => {
     renderGraph();
