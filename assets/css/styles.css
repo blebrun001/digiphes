@@ -313,8 +313,9 @@ a {
 
 #results .results-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 280px));
   gap: 0.9rem;
+  justify-content: center;
 }
 
 #results .research-result-item {
@@ -322,9 +323,9 @@ a {
   border-radius: 24px;
   background: #f8fafc;
   padding: 0.8rem;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.7rem;
-  align-content: start;
   box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
 
@@ -400,6 +401,7 @@ a {
 #results .research-result-actions {
   display: flex;
   justify-content: flex-end;
+  margin-top: auto;
 }
 
 #research .research-search-form {
